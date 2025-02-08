@@ -53,5 +53,5 @@ document
     let subject = encodeURIComponent(document.getElementById("subject").value);
     let body = encodeURIComponent(document.getElementById("body").value);
 
-    window.location.href = `mailto:your@email.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:mohaminforati@gmail.com?subject=${subject}&body=${body}`;
   });
