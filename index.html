@@ -1,818 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
+<html x-data="{langIsFa: localStorage.lang == 'fa' ? true : false, toggleLang() { this.langIsFa = !this.langIsFa; localStorage.setItem('lang', this.langIsFa ? 'fa' : 'en'); }}" :dir="langIsFa ? 'rtl' : 'ltr'" :lang="langIsFa ? 'IR-fa' : 'en'">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-png" href="./images/favicon.png">
     <link rel="stylesheet" href="./css/style.css">
-    <style
-        data-href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;family=Roboto+Slab:wght@300;400;500;600;700;800;900&amp;display=swap">
-        @font-face {
-            font-family: 'Poppins';
-            font-style: normal;
-            font-weight: 300;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLDz8V1g.woff) format('woff')
-        }
-
-        @font-face {
-            font-family: 'Poppins';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrFJM.woff) format('woff')
-        }
-
-        @font-face {
-            font-family: 'Poppins';
-            font-style: normal;
-            font-weight: 500;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLGT9V1g.woff) format('woff')
-        }
-
-        @font-face {
-            font-family: 'Poppins';
-            font-style: normal;
-            font-weight: 600;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLEj6V1g.woff) format('woff')
-        }
-
-        @font-face {
-            font-family: 'Poppins';
-            font-style: normal;
-            font-weight: 700;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLCz7V1g.woff) format('woff')
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 300;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngbUXZYTXPIvIBgJJSb6s3BzlRRfKOFbvjo0oSWaw.woff) format('woff')
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngbUXZYTXPIvIBgJJSb6s3BzlRRfKOFbvjojISWaw.woff) format('woff')
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 500;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngbUXZYTXPIvIBgJJSb6s3BzlRRfKOFbvjovoSWaw.woff) format('woff')
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 600;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngbUXZYTXPIvIBgJJSb6s3BzlRRfKOFbvjoUoOWaw.woff) format('woff')
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 700;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngbUXZYTXPIvIBgJJSb6s3BzlRRfKOFbvjoa4OWaw.woff) format('woff')
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 800;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngbUXZYTXPIvIBgJJSb6s3BzlRRfKOFbvjoDIOWaw.woff) format('woff')
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 900;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngbUXZYTXPIvIBgJJSb6s3BzlRRfKOFbvjoJYOWaw.woff) format('woff')
-        }
-
-        @font-face {
-            font-family: 'Poppins';
-            font-style: normal;
-            font-weight: 300;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLDz8Z11lFd2JQEl8qw.woff2) format('woff2');
-            unicode-range: U+0900-097F, U+1CD0-1CF6, U+1CF8-1CF9, U+200C-200D, U+20A8, U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FB
-        }
-
-        @font-face {
-            font-family: 'Poppins';
-            font-style: normal;
-            font-weight: 300;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLDz8Z1JlFd2JQEl8qw.woff2) format('woff2');
-            unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF
-        }
-
-        @font-face {
-            font-family: 'Poppins';
-            font-style: normal;
-            font-weight: 300;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLDz8Z1xlFd2JQEk.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD
-        }
-
-        @font-face {
-            font-family: 'Poppins';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrJJbecnFHGPezSQ.woff2) format('woff2');
-            unicode-range: U+0900-097F, U+1CD0-1CF6, U+1CF8-1CF9, U+200C-200D, U+20A8, U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FB
-        }
-
-        @font-face {
-            font-family: 'Poppins';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrJJnecnFHGPezSQ.woff2) format('woff2');
-            unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF
-        }
-
-        @font-face {
-            font-family: 'Poppins';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrJJfecnFHGPc.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD
-        }
-
-        @font-face {
-            font-family: 'Poppins';
-            font-style: normal;
-            font-weight: 500;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLGT9Z11lFd2JQEl8qw.woff2) format('woff2');
-            unicode-range: U+0900-097F, U+1CD0-1CF6, U+1CF8-1CF9, U+200C-200D, U+20A8, U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FB
-        }
-
-        @font-face {
-            font-family: 'Poppins';
-            font-style: normal;
-            font-weight: 500;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLGT9Z1JlFd2JQEl8qw.woff2) format('woff2');
-            unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF
-        }
-
-        @font-face {
-            font-family: 'Poppins';
-            font-style: normal;
-            font-weight: 500;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLGT9Z1xlFd2JQEk.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD
-        }
-
-        @font-face {
-            font-family: 'Poppins';
-            font-style: normal;
-            font-weight: 600;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLEj6Z11lFd2JQEl8qw.woff2) format('woff2');
-            unicode-range: U+0900-097F, U+1CD0-1CF6, U+1CF8-1CF9, U+200C-200D, U+20A8, U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FB
-        }
-
-        @font-face {
-            font-family: 'Poppins';
-            font-style: normal;
-            font-weight: 600;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLEj6Z1JlFd2JQEl8qw.woff2) format('woff2');
-            unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF
-        }
-
-        @font-face {
-            font-family: 'Poppins';
-            font-style: normal;
-            font-weight: 600;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLEj6Z1xlFd2JQEk.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD
-        }
-
-        @font-face {
-            font-family: 'Poppins';
-            font-style: normal;
-            font-weight: 700;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLCz7Z11lFd2JQEl8qw.woff2) format('woff2');
-            unicode-range: U+0900-097F, U+1CD0-1CF6, U+1CF8-1CF9, U+200C-200D, U+20A8, U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FB
-        }
-
-        @font-face {
-            font-family: 'Poppins';
-            font-style: normal;
-            font-weight: 700;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLCz7Z1JlFd2JQEl8qw.woff2) format('woff2');
-            unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF
-        }
-
-        @font-face {
-            font-family: 'Poppins';
-            font-style: normal;
-            font-weight: 700;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLCz7Z1xlFd2JQEk.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 300;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufA5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 300;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufJ5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 300;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufB5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+1F00-1FFF
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 300;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufO5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0370-03FF
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 300;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufC5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 300;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufD5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 300;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufN5qWr4xCC.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufA5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufJ5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufB5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+1F00-1FFF
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufO5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0370-03FF
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufC5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufD5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufN5qWr4xCC.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 500;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufA5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 500;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufJ5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 500;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufB5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+1F00-1FFF
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 500;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufO5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0370-03FF
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 500;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufC5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 500;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufD5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 500;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufN5qWr4xCC.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 600;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufA5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 600;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufJ5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 600;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufB5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+1F00-1FFF
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 600;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufO5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0370-03FF
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 600;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufC5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 600;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufD5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 600;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufN5qWr4xCC.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 700;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufA5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 700;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufJ5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 700;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufB5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+1F00-1FFF
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 700;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufO5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0370-03FF
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 700;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufC5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 700;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufD5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 700;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufN5qWr4xCC.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 800;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufA5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 800;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufJ5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 800;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufB5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+1F00-1FFF
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 800;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufO5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0370-03FF
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 800;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufC5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 800;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufD5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 800;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufN5qWr4xCC.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 900;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufA5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 900;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufJ5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 900;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufB5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+1F00-1FFF
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 900;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufO5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0370-03FF
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 900;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufC5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 900;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufD5qWr4xCCQ_k.woff2) format('woff2');
-            unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF
-        }
-
-        @font-face {
-            font-family: 'Roboto Slab';
-            font-style: normal;
-            font-weight: 900;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/robotoslab/v24/BngMUXZYTXPIvIBgJJSb6ufN5qWr4xCC.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD
-        }
-    </style>
-    <title> Aminfo | Mohammad Amin Forati </title>
+    <title> aminfo | Mohammad Amin Forati </title>
 </head>
 
-<body class="bg-light dark:bg-dark transition-all duration-300 w-screen overflow-x-hidden select-none"
-    x-data="{activeTab: $persist(0).using(sessionStorage)}">
+<body class="bg-light dark:bg-dark transition-all duration-300 w-screen overflow-x-hidden select-none" x-data="{activeTab: $persist(0).using(sessionStorage)}">
 
     <header class="sticky top-0 lg:static z-10">
 
-        <section
-            class="flex items-center justify-between px-8 lg:px-0 lg:justify-around h-20 lg:h-36 text-[#44566c] font-medium bg-slate-200 dark:bg-slate-900 lg:dark:bg-transparent lg:bg-transparent bg-opacity-50 dark:bg-opacity-60 dark:backdrop-blur-md backdrop-blur-md lg:backdrop-blur-none lg:dark:backdrop-blur-none relative"
-            x-data="{openMenu : false}">
+        <section class="flex items-center justify-between px-8 lg:px-0 lg:justify-around h-20 lg:h-36 text-[#44566c] font-medium bg-slate-200 dark:bg-slate-900 lg:dark:bg-transparent lg:bg-transparent bg-opacity-50 dark:bg-opacity-60 dark:backdrop-blur-md backdrop-blur-md lg:backdrop-blur-none lg:dark:backdrop-blur-none relative" x-data="{openMenu : false}">
 
             <!-- Logo -->
             <section>
-                <h1 class="text-[#3a9bdc] dark:text-[#3a9bdc] font-bold text-3xl">aminfo</h1>
+                <h1 class="text-[#3a9bdc] dark:text-sky-400 font-bold text-3xl font-poppins">aminfo</h1>
             </section>
 
             <section class="flex justify-between items-center gap-2 lg:gap-6 z-10" @click.outside="openMenu = false">
                 <!-- Menu -->
-                <nav class="absolute lg:h-auto lg:static top-20 left-0 right-0 dark:bg-slate-900 bg-slate-100 w-full rounded-b-2xl px-3 lg:bg-transparent lg:dark:bg-transparent lg:p-0 overflow-hidden transition-all ease-in-out duration-500"
-                    :class="{'h-0' :  openMenu === false, 'h-[214px]' : openMenu === true}" @click="openMenu = false"
-                    x-cloak>
+                <nav class="absolute lg:h-auto lg:static top-20 inset-x-0 dark:bg-slate-900 bg-slate-100 w-full rounded-b-2xl px-3 lg:bg-transparent lg:dark:bg-transparent lg:p-0 overflow-hidden transition-all ease-in-out duration-500" :class="{'h-0' :  openMenu === false, 'h-[214px]' : openMenu === true}" @click="openMenu = false" x-cloak>
                     <ul class="flex flex-col lg:flex-row justify-center items-center gap-2 xl:gap-5 py-4">
-                        <li class="py-2.5 px-5 rounded-md text-sm cursor-pointer w-full lg:w-auto"
-                            :class="{ 'active' : activeTab === 0, 'non-active' : activeTab !== 0}"
-                            @click="activeTab = 0">
+                        <li class="py-2.5 px-5 rounded-md text-sm cursor-pointer w-full lg:w-auto" :class="{ 'active' : activeTab === 0, 'non-active' : activeTab !== 0}" @click="activeTab = 0">
                             <span class="flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Z" />
                                 </svg>
-                                Home
+                                <span x-text="langIsFa ? 'من' : 'Me'"></span>
                             </span>
                         </li>
-                        <li class="py-2.5 px-5 rounded-md text-sm cursor-pointer w-full lg:w-auto"
-                            :class="{ 'active' : activeTab === 1, 'non-active' : activeTab !== 1}"
-                            @click="activeTab = 1">
+                        <li class="py-2.5 px-5 rounded-md text-sm cursor-pointer w-full lg:w-auto" :class="{ 'active' : activeTab === 1, 'non-active' : activeTab !== 1}" @click="activeTab = 1">
                             <span class="flex items-center gap-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                    stroke-width="1.5" stroke="currentColor" class="size-5">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                                 </svg>
-                                About
+                                <span x-text="langIsFa ? 'درباره' : 'About'"></span>
                             </span>
                         </li>
-                        <li class="py-2.5 px-5 rounded-md text-sm cursor-pointer w-full lg:w-auto"
-                            :class="{ 'active' : activeTab === 2, 'non-active' : activeTab !== 2}"
-                            @click="activeTab = 2">
+                        <li class="py-2.5 px-5 rounded-md text-sm cursor-pointer w-full lg:w-auto" :class="{ 'active' : activeTab === 2, 'non-active' : activeTab !== 2}" @click="activeTab = 2">
                             <span class="flex items-center gap-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                    stroke-width="1.5" stroke="currentColor" class="size-5">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
                                 </svg>
-                                Resium
+                                <span x-text="langIsFa ? 'رزومه' : 'Resume'"></span>
                             </span>
                         </li>
-                        <!-- <li class="py-2.5 px-5 rounded-md text-sm cursor-pointer w-full lg:w-auto"
-                            :class="{ 'active' : activeTab === 3, 'non-active' : activeTab !== 3}"
-                            @click="activeTab = 3">
+                        <li class="py-2.5 px-5 rounded-md text-sm cursor-pointer w-full lg:w-auto" :class="{ 'active' : activeTab === 5, 'non-active' : activeTab !== 5}" @click="activeTab = 5">
                             <span class="flex items-center gap-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
-                                </svg>
-
-                                Works
-                            </span>
-                        </li>
-                        <li class="py-2.5 px-5 rounded-md text-sm cursor-pointer w-full lg:w-auto"
-                            :class="{ 'active' : activeTab === 4, 'non-active' : activeTab !== 4}"
-                            @click="activeTab = 4">
-                            <span class="flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-                                </svg>
-
-                                Blogs
-                            </span>
-                        </li> -->
-                        <li class="py-2.5 px-5 rounded-md text-sm cursor-pointer w-full lg:w-auto"
-                            :class="{ 'active' : activeTab === 5, 'non-active' : activeTab !== 5}"
-                            @click="activeTab = 5">
-                            <span class="flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                    stroke-width="1.5" stroke="currentColor" class="size-5">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
                                 </svg>
-
-                                Contact
+                                <span x-text="langIsFa ? 'ارتباط' : 'Contact'"></span>
                             </span>
                         </li>
                     </ul>
                 </nav>
 
                 <!-- Tools -->
-                <section>
+                <section class="flex gap-2">
                     <!-- DarkMode -->
                     <section x-data="darkMode()">
-
                         <!-- Moon -->
                         <span class="moon block" @click="makeDark()">
-                            <svg class="w-6 h-6 animate-wiggle" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"
-                                    stroke-linecap="round" stroke-linejoin="round" />
+                            <svg class="size-6 animate-wiggle" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </span>
 
                         <!-- Sun -->
                         <span class="sun block" @click="makeLight()">
-                            <svg class="w-6 h-6 animate-wiggle" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                            <svg class="size-6 animate-wiggle" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                            </svg>
+                        </span>
+                    </section>
+
+                    <!-- Languages -->
+                    <section>
+                        <span class="persian block" @click="toggleLang">
+                            <!-- Persian -->
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-6" x-show="!langIsFa">
+                                <mask id="a">
+                                  <circle cx="256" cy="256" r="256" fill="#fff"/>
+                                </mask>
+                                <g mask="url(#a)">
+                                  <path fill="#eee" d="M0 144.7 258.8 39.6 512 144.7v222.6L257 493 0 367.3z"/>
+                                  <path fill="#6da544" d="M0 0v144.7h105.6v-22.2h33.6v22.2h33.3v-22.2h33.6v22.2h33.3v-22.2H273v22.2h33v-22.2h33.6v22.2h33.2v-22.2h33.6v22.2H512V0z"/>
+                                  <path fill="#d80027" d="M0 367.3V512h512V367.3H406.4v22.4h-33.6v-22.4h-33.2v22.4H306v-22.4h-33v22.4h-33.6v-22.4h-33.3v22.4h-33.6v-22.4h-33.3v22.4h-33.6v-22.4zm339.1-178h-33.4c.2 3.7.4 7.4.4 11.1 0 24.8-6.2 48.8-17 66-3.3 5.2-9 12.6-16.4 17.6v-94.7h-33.4v94.8c-7.5-5-13-12.4-16.4-17.7-10.8-17-17-41-17-65.9 0-3.7.2-7.4.4-11H173a190 190 0 0 0-.4 11c0 68.7 36.7 122.5 83.5 122.5s83.5-53.8 83.5-122.5c0-3.7-.1-7.4-.4-11z"/>
+                                </g>
+                            </svg>
+                            
+                            <!-- English -->
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-6" x-show="langIsFa" x-cloak>
+                                <mask id="b">
+                                  <circle cx="256" cy="256" r="256" fill="#fff"/>
+                                </mask>
+                                <g mask="url(#b)">
+                                  <path fill="#eee" d="m0 0 8 22-8 23v23l32 54-32 54v32l32 48-32 48v32l32 54-32 54v68l22-8 23 8h23l54-32 54 32h32l48-32 48 32h32l54-32 54 32h68l-8-22 8-23v-23l-32-54 32-54v-32l-32-48 32-48v-32l-32-54 32-54V0l-22 8-23-8h-23l-54 32-54-32h-32l-48 32-48-32h-32l-54 32L68 0H0z"/>
+                                  <path fill="#0052b4" d="M336 0v108L444 0Zm176 68L404 176h108zM0 176h108L0 68ZM68 0l108 108V0Zm108 512V404L68 512ZM0 444l108-108H0Zm512-108H404l108 108Zm-68 176L336 404v108z"/>
+                                  <path fill="#d80027" d="M0 0v45l131 131h45L0 0zm208 0v208H0v96h208v208h96V304h208v-96H304V0h-96zm259 0L336 131v45L512 0h-45zM176 336 0 512h45l131-131v-45zm160 0 176 176v-45L381 336h-45z"/>
+                                </g>
                             </svg>
                         </span>
                     </section>
                 </section>
 
-                <section @click="openMenu = ! openMenu"
-                    class="lg:hidden bg-white dark:bg-slate-800 dark:text-slate-300 p-2.5 dark:hover:bg-[#3a9bdc] hover:bg-[#3a9bdc] rounded-full hover:text-white dark:hover:text-white transition-colors duration-300 cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                <section @click="openMenu = ! openMenu" class="lg:hidden bg-white dark:bg-slate-800 dark:text-slate-300 p-2.5 dark:hover:bg-[#3a9bdc] hover:bg-[#3a9bdc] rounded-full hover:text-white dark:hover:text-white transition-colors duration-300 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                     </svg>
                 </section>
             </section>
@@ -820,170 +125,118 @@
 
     </header>
 
-    <main class="sm:pb-16 flex relative z-0 overflow-x-hidden">
-        <section x-show="activeTab === 0" class="container flex flex-col justify-center items-center gap-5"
-            x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-90"
-            x-transition:enter-end="opacity-100 scale-100" x-cloak>
+    <main class="sm:pb-16 flex justify-center relative z-0 overflow-x-hidden">
+        <section x-show="activeTab === 0" class="container flex flex-col justify-center items-center gap-5" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100" x-cloak>
             <section>
-                <img src="./images/profile.jpg" class="w-60 h-60 md:w-72 md:h-72 rounded-full" alt="">
+                <img src="./images/profile.jpg" class="max-w-72 max-h-72 md:size-72 rounded-full" alt="">
             </section>
             <section class="flex flex-col">
-                <h3 class="font-semibold text-2xl mb-1 text-black dark:text-white text-center">Mohammad <span
-                        class="text-[#3a9bdc] dark:text-[#29c5f6]">Amin Fo</span>rati</h3>
-                <p class="text-[#7b7b7b] dark:text-slate-300 text-center">Web Designer & Developer</p>
+                <h3 class="font-bold text-2xl mb-1 text-black dark:text-white text-center" x-show="langIsFa">محمد <span class="text-[#3a9bdc] dark:text-[#29c5f6]">امین فُ</span>راتی</h3>
+                <h3 class="font-bold text-2xl mb-1 text-black dark:text-white text-center" x-show="!langIsFa">Mohammad <span class="text-[#3a9bdc] dark:text-[#29c5f6]">Amin Fo</span>rati</h3>
+                <p class="text-[#7b7b7b] dark:text-slate-300 text-center font-medium" x-text="langIsFa ? 'طراح و توسعه‌دهنده وب' : 'Web Designer & Developer'"></p>
             </section>
             <section class="flex justify-center items-center gap-3">
                 <!-- Gitlab -->
                 <a href="https://gitlab.com/Aminfo" target="_blank"
-                    class="flex items-center justify-center group w-10 h-10 rounded-lg hover:bg-[#3a9bdc] dark:hover:bg-[#3a9bdc] bg-white dark:bg-slate-800 transition-colors duration-300">
+                    class="flex items-center justify-center group size-10 rounded-lg hover:bg-[#3a9bdc] dark:hover:bg-[#3a9bdc] bg-white dark:bg-slate-800 transition-colors duration-300">
                     <span>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 236" width="1em" height="1em">
-                            <path class="group-hover:fill-white fill-[#e24329]"
-                                d="M128.075 236.075l47.104-144.97H80.97l47.104 144.97z" class="colorE24329 svgShape">
-                            </path>
-                            <path class="group-hover:fill-white fill-[#fc6d26]"
-                                d="M128.075 236.074L80.97 91.104H14.956l113.119 144.97z" class="colorFC6D26 svgShape">
-                            </path>
-                            <path class="group-hover:fill-white fill-[#fca326]"
-                                d="M14.956 91.104L.642 135.16a9.752 9.752 0 0 0 3.542 10.903l123.891 90.012-113.12-144.97z"
-                                class="colorFCA326 svgShape"></path>
-                            <path class="group-hover:fill-white fill-[#e24329]"
-                                d="M14.956 91.105H80.97L52.601 3.79c-1.46-4.493-7.816-4.492-9.275 0l-28.37 87.315z"
-                                class="colorE24329 svgShape"></path>
-                            <path class="group-hover:fill-white fill-[#fc6d26]"
-                                d="M128.075 236.074l47.104-144.97h66.015l-113.12 144.97z" class="colorFC6D26 svgShape">
-                            </path>
-                            <path class="group-hover:fill-white fill-[#fca326]"
-                                d="M241.194 91.104l14.314 44.056a9.752 9.752 0 0 1-3.543 10.903l-123.89 90.012 113.119-144.97z"
-                                class="colorFCA326 svgShape"></path>
-                            <path class="group-hover:fill-white fill-[#e24329]"
-                                d="M241.194 91.105h-66.015l28.37-87.315c1.46-4.493 7.816-4.492 9.275 0l28.37 87.315z"
-                                class="colorE24329 svgShape"></path>
+                            <path class="group-hover:fill-white fill-[#e24329]" d="M128.075 236.075l47.104-144.97H80.97l47.104 144.97z" class="colorE24329 svgShape"></path>
+                            <path class="group-hover:fill-white fill-[#fc6d26]" d="M128.075 236.074L80.97 91.104H14.956l113.119 144.97z" class="colorFC6D26 svgShape"></path>
+                            <path class="group-hover:fill-white fill-[#fca326]" d="M14.956 91.104L.642 135.16a9.752 9.752 0 0 0 3.542 10.903l123.891 90.012-113.12-144.97z" class="colorFCA326 svgShape"></path>
+                            <path class="group-hover:fill-white fill-[#e24329]" d="M14.956 91.105H80.97L52.601 3.79c-1.46-4.493-7.816-4.492-9.275 0l-28.37 87.315z" class="colorE24329 svgShape"></path>
+                            <path class="group-hover:fill-white fill-[#fc6d26]" d="M128.075 236.074l47.104-144.97h66.015l-113.12 144.97z" class="colorFC6D26 svgShape"></path>
+                            <path class="group-hover:fill-white fill-[#fca326]" d="M241.194 91.104l14.314 44.056a9.752 9.752 0 0 1-3.543 10.903l-123.89 90.012 113.119-144.97z" class="colorFCA326 svgShape"></path>
+                            <path class="group-hover:fill-white fill-[#e24329]" d="M241.194 91.105h-66.015l28.37-87.315c1.46-4.493 7.816-4.492 9.275 0l28.37 87.315z" class="colorE24329 svgShape"></path>
                         </svg>
                     </span>
                 </a>
 
                 <!-- Github -->
-                <a href="https://github.com/Aminfo184" target="_blank"
-                    class="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-[#3a9bdc] dark:hover:bg-[#3a9bdc] bg-white dark:bg-slate-800 hover:fill-white dark:hover:fill-white fill-black dark:fill-slate-500 transition-colors duration-300">
+                <a href="https://github.com/aminfo184" target="_blank" class="flex items-center justify-center size-10 rounded-lg hover:bg-[#3a9bdc] dark:hover:bg-[#3a9bdc] bg-white dark:bg-slate-800 hover:fill-white dark:hover:fill-white fill-black dark:fill-slate-500 transition-colors duration-300">
                     <span>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="1em" height="1em">
-                            <path
-                                d="M7.999 0C3.582 0 0 3.596 0 8.032a8.031 8.031 0 0 0 5.472 7.621c.4.074.546-.174.546-.387 0-.191-.007-.696-.011-1.366-2.225.485-2.695-1.077-2.695-1.077-.363-.928-.888-1.175-.888-1.175-.727-.498.054-.488.054-.488.803.057 1.225.828 1.225.828.714 1.227 1.873.873 2.329.667.072-.519.279-.873.508-1.074-1.776-.203-3.644-.892-3.644-3.969 0-.877.312-1.594.824-2.156-.083-.203-.357-1.02.078-2.125 0 0 .672-.216 2.2.823a7.633 7.633 0 0 1 2.003-.27 7.65 7.65 0 0 1 2.003.271c1.527-1.039 2.198-.823 2.198-.823.436 1.106.162 1.922.08 2.125.513.562.822 1.279.822 2.156 0 3.085-1.87 3.764-3.652 3.963.287.248.543.738.543 1.487 0 1.074-.01 1.94-.01 2.203 0 .215.144.465.55.386A8.032 8.032 0 0 0 16 8.032C16 3.596 12.418 0 7.999 0z">
-                            </path>
-                        </svg>
-                    </span>
-                </a>
-
-                <!-- Instagram -->
-                <a href="https://www.instagram.com/aminfo.dev" target="_blank"
-                    class="flex items-center justify-center group w-10 h-10 rounded-lg hover:bg-[#3a9bdc] dark:hover:bg-[#3a9bdc] bg-white dark:bg-slate-800 transition-colors duration-300">
-                    <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 101.996 102" width="1em" height="1em">
-                            <defs>
-                                <radialGradient id="a" cx="13.551" cy="102.482" r="133.147"
-                                    gradientUnits="userSpaceOnUse">
-                                    <stop offset=".09" stop-color="#fa8f21"></stop>
-                                    <stop offset=".78" stop-color="#d82d7e"></stop>
-                                </radialGradient>
-                                <radialGradient id="b" cx="61.859" cy="107.051" r="104.938"
-                                    gradientUnits="userSpaceOnUse">
-                                    <stop offset=".64" stop-color="#8c3aaa" stop-opacity="0"></stop>
-                                    <stop offset="1" stop-color="#8c3aaa"></stop>
-                                </radialGradient>
-                            </defs>
-                            <path fill="url(#a)" class="group-hover:fill-white"
-                                d="M34 51a17 17 0 1 1 17 17 17 17 0 0 1-17-17m-9.191 0A26.188 26.188 0 1 0 51 24.812 26.187 26.187 0 0 0 24.812 51M72.1 23.774a6.12 6.12 0 1 0 6.122-6.118 6.123 6.123 0 0 0-6.12 6.118M30.4 92.513a28.187 28.187 0 0 1-9.471-1.754 15.85 15.85 0 0 1-5.866-3.815 15.735 15.735 0 0 1-3.815-5.862 28.161 28.161 0 0 1-1.758-9.471c-.247-5.376-.3-6.991-.3-20.61s.053-15.23.3-20.61a28.374 28.374 0 0 1 1.754-9.471 15.85 15.85 0 0 1 3.815-5.866 15.718 15.718 0 0 1 5.866-3.815A28.161 28.161 0 0 1 30.4 9.484c5.376-.247 6.991-.3 20.6-.3s15.23.053 20.61.3a28.373 28.373 0 0 1 9.471 1.754 15.8 15.8 0 0 1 5.866 3.815 15.8 15.8 0 0 1 3.815 5.866 28.162 28.162 0 0 1 1.754 9.471c.247 5.38.3 6.991.3 20.61s-.049 15.23-.3 20.61a28.294 28.294 0 0 1-1.754 9.471 16.886 16.886 0 0 1-9.681 9.677 28.161 28.161 0 0 1-9.471 1.754c-5.376.247-6.991.3-20.61.3s-15.23-.049-20.6-.3M29.974.309a37.4 37.4 0 0 0-12.379 2.369A25.015 25.015 0 0 0 8.56 8.56a24.918 24.918 0 0 0-5.883 9.034 37.407 37.407 0 0 0-2.368 12.38C.058 35.412 0 37.15 0 51s.058 15.588.309 21.026a37.405 37.405 0 0 0 2.369 12.379A24.931 24.931 0 0 0 8.56 93.44a25.076 25.076 0 0 0 9.034 5.883 37.43 37.43 0 0 0 12.379 2.369c5.441.247 7.176.309 21.026.309s15.588-.058 21.026-.309a37.405 37.405 0 0 0 12.379-2.369 26.075 26.075 0 0 0 14.918-14.918 37.3 37.3 0 0 0 2.369-12.379c.247-5.442.3-7.176.3-21.026s-.058-15.588-.3-21.026a37.394 37.394 0 0 0-2.369-12.379A25.08 25.08 0 0 0 93.44 8.56a24.955 24.955 0 0 0-9.03-5.883A37.347 37.347 0 0 0 72.03.309C66.593.062 64.854 0 51 0S35.41.058 29.97.309"
-                                data-name="Path 14"></path>
-                            <path fill="url(#b)" class="group-hover:fill-white"
-                                d="M34 51a17 17 0 1 1 17 17 17 17 0 0 1-17-17m-9.191 0A26.188 26.188 0 1 0 51 24.812 26.187 26.187 0 0 0 24.812 51M72.1 23.774a6.12 6.12 0 1 0 6.122-6.118 6.123 6.123 0 0 0-6.12 6.118M30.4 92.513a28.187 28.187 0 0 1-9.471-1.754 15.85 15.85 0 0 1-5.866-3.815 15.735 15.735 0 0 1-3.815-5.862 28.161 28.161 0 0 1-1.758-9.471c-.247-5.376-.3-6.991-.3-20.61s.053-15.23.3-20.61a28.374 28.374 0 0 1 1.754-9.471 15.85 15.85 0 0 1 3.815-5.866 15.718 15.718 0 0 1 5.866-3.815A28.161 28.161 0 0 1 30.4 9.484c5.376-.247 6.991-.3 20.6-.3s15.23.053 20.61.3a28.373 28.373 0 0 1 9.471 1.754 15.8 15.8 0 0 1 5.866 3.815 15.8 15.8 0 0 1 3.815 5.866 28.162 28.162 0 0 1 1.754 9.471c.247 5.38.3 6.991.3 20.61s-.049 15.23-.3 20.61a28.294 28.294 0 0 1-1.754 9.471 16.886 16.886 0 0 1-9.681 9.677 28.161 28.161 0 0 1-9.471 1.754c-5.376.247-6.991.3-20.61.3s-15.23-.049-20.6-.3M29.974.309a37.4 37.4 0 0 0-12.379 2.369A25.015 25.015 0 0 0 8.56 8.56a24.918 24.918 0 0 0-5.883 9.034 37.407 37.407 0 0 0-2.368 12.38C.058 35.412 0 37.15 0 51s.058 15.588.309 21.026a37.405 37.405 0 0 0 2.369 12.379A24.931 24.931 0 0 0 8.56 93.44a25.076 25.076 0 0 0 9.034 5.883 37.43 37.43 0 0 0 12.379 2.369c5.441.247 7.176.309 21.026.309s15.588-.058 21.026-.309a37.405 37.405 0 0 0 12.379-2.369 26.075 26.075 0 0 0 14.918-14.918 37.3 37.3 0 0 0 2.369-12.379c.247-5.442.3-7.176.3-21.026s-.058-15.588-.3-21.026a37.394 37.394 0 0 0-2.369-12.379A25.08 25.08 0 0 0 93.44 8.56a24.955 24.955 0 0 0-9.03-5.883A37.347 37.347 0 0 0 72.03.309C66.593.062 64.854 0 51 0S35.41.058 29.97.309"
-                                data-name="Path 15"></path>
+                            <path d="M7.999 0C3.582 0 0 3.596 0 8.032a8.031 8.031 0 0 0 5.472 7.621c.4.074.546-.174.546-.387 0-.191-.007-.696-.011-1.366-2.225.485-2.695-1.077-2.695-1.077-.363-.928-.888-1.175-.888-1.175-.727-.498.054-.488.054-.488.803.057 1.225.828 1.225.828.714 1.227 1.873.873 2.329.667.072-.519.279-.873.508-1.074-1.776-.203-3.644-.892-3.644-3.969 0-.877.312-1.594.824-2.156-.083-.203-.357-1.02.078-2.125 0 0 .672-.216 2.2.823a7.633 7.633 0 0 1 2.003-.27 7.65 7.65 0 0 1 2.003.271c1.527-1.039 2.198-.823 2.198-.823.436 1.106.162 1.922.08 2.125.513.562.822 1.279.822 2.156 0 3.085-1.87 3.764-3.652 3.963.287.248.543.738.543 1.487 0 1.074-.01 1.94-.01 2.203 0 .215.144.465.55.386A8.032 8.032 0 0 0 16 8.032C16 3.596 12.418 0 7.999 0z"></path>
                         </svg>
                     </span>
                 </a>
 
                 <!-- Linkedin -->
-                <a href="https://www.linkedin.com/in/mohammad-amin-forati" target="_blank"
-                    class="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-[#3a9bdc] dark:hover:bg-[#3a9bdc] bg-white dark:bg-slate-800 hover:fill-white fill-[#0072b1] transition-colors duration-300">
+                <a href="https://www.linkedin.com/in/mohammad-amin-forati" target="_blank" class="flex items-center justify-center size-10 rounded-lg hover:bg-[#3a9bdc] dark:hover:bg-[#3a9bdc] bg-white dark:bg-slate-800 hover:fill-white fill-[#0072b1] transition-colors duration-300">
                     <span>
                         <svg viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z">
-                            </path>
+                            <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path>
                         </svg>
                     </span>
                 </a>
             </section>
-            <section>
-                <a href=""
-                    class="flex gap-2 bg-gradient-to-r from-[#29c5f6] to-[#3a9bdc] hover:from-[#3a9bdc] hover:to-[#29c5f6] rounded-full text-white py-3 px-7 text-lg">
+            <!-- <section>
+                <a href="" class="flex gap-2 bg-gradient-to-r from-[#29c5f6] to-[#3a9bdc] hover:from-[#3a9bdc] hover:to-[#29c5f6] rounded-full text-white py-3 px-7 text-lg">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-6 h-6">
+                        stroke="currentColor" class="size-6">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
                     </svg>
-                    Download CV
+                    <span x-text="langIsFa ? 'دانلود رزومه' : 'Download CV'"></span>
                 </a>
-            </section>
+            </section> -->
         </section>
 
-        <section x-show="activeTab === 1"
-            class="container flex flex-col justify-center items-center gap-5 sm:mt-10 lg:mt-0"
+        <section x-show="activeTab === 1" class="container flex flex-col justify-center items-center gap-5 sm:mt-10 lg:mt-0"
             x-transition:enter="transition ease-out duration-300 origin-top"
             x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100" x-cloak>
             <section class="bg-white dark:bg-slate-800 sm:rounded-2xl sm:mx-10 w-full lg:w-10/12">
                 <section class="py-6 px-4 sm:py-12 sm:px-20">
-                    <h2
-                        class="relative salb text-black dark:text-white inline-block text-4xl font-semibold after:w-0 sm:after:w-64 after:h-[1.5px] after:absolute after:left-48 after:top-6 after:bg-gradient-to-r after:from-[#29c5f6] after:to-[#3a9bdc] after:rounded-full">
-                        About me</h2>
+                    <h2 x-text="langIsFa ? 'درباره من' : 'About me'" :class="langIsFa || 'salb'" class="relative text-black dark:text-white flex items-center gap-8 text-4xl font-semibold after:w-0 sm:after:w-64 after:h-[1.5px] after:bg-gradient-to-r after:from-[#29c5f6] after:to-[#3a9bdc] after:rounded-full"></h2>
                 </section>
 
                 <section class="grid grid-cols-12 pb-12 px-4 sm:px-20">
                     <section class="col-span-12 md:col-span-4 md:px-3">
-                        <img src="./images/IMG_20230801_170617.png" alt="" class="h-full rounded-3xl object-cover">
+                        <img src="./images/amin-walking.png" alt="" class="h-full rounded-3xl object-cover">
                     </section>
 
                     <section class="col-span-12 md:col-span-8 md:px-3 py-5 md:py-3">
                         <section>
-                            <h3 class="text-2xl font-medium dark:text-white mb-2.5">Who am i?</h3>
-                            <p class="text-[#44566c] dark:text-[#a6a6a6] leading-7 text-justify">
-                                I am an enthusiastic young person with smart ideas for web application design.
-                                I live in Bandar Abbas city in Iran and I would like to cooperate with any other city or
-                                country for more experience in
-                                building dynamic web pages.
+                            <h3 x-show="langIsFa" class="text-2xl font-medium dark:text-white mb-2.5">من کی‌ام؟</h3>
+                            <h3 x-show="!langIsFa" class="text-2xl font-medium dark:text-white mb-2.5">Who am i?</h3>
+                            <p x-show="langIsFa" class="text-[#44566c] dark:text-[#a6a6a6] leading-7 text-justify">
+                                من یک برنامه‌نویس و توسعه‌دهنده وب هستم که با اشتیاق فراوان به خلق تجربه‌های دیجیتالی مدرن، بهینه و کاربرپسند می‌پردازم. ساکن بندرعباس هستم اما مشتاق همکاری با تیم‌ها و پروژه‌های بین‌المللی برای توسعه وب‌سایت‌های حرفه‌ای و پویا هستم.
                             </p>
-                            <p class="text-[#44566c] leading-7 mt-2.5 dark:text-[#a6a6a6] text-justify">
-                                I am enthusiastic about the latest and advanced technologies in creating web pages and I
-                                always try to keep myself up to
-                                date.
+                            <p x-show="!langIsFa" class="text-[#44566c] dark:text-[#a6a6a6] leading-7 text-justify">
+                                I am a passionate web developer dedicated to crafting modern, efficient, and user-friendly digital experiences. Based in Bandar Abbas, Iran, I am eager to collaborate with global teams and innovative projects to build high-quality dynamic websites.
+                            </p>
+                            <p x-show="langIsFa" class="text-[#44566c] leading-7 mt-2.5 dark:text-[#a6a6a6] text-justify">
+                                علاقه‌ی زیادی به جدیدترین فناوری‌ها و ترندهای طراحی وب دارم و همیشه در تلاش برای ارتقای مهارت‌ها و یادگیری تکنولوژی‌های نوین هستم.
+                            </p>
+                            <p x-show="!langIsFa" class="text-[#44566c] leading-7 mt-2.5 dark:text-[#a6a6a6] text-justify">
+                                My enthusiasm for cutting-edge web technologies drives me to continuously enhance my skills and stay ahead of industry trends.
                             </p>
                         </section>
 
                         <section>
-                            <h3 class="text-2xl font-medium my-5 dark:text-white">Personal Info</h3>
+                            <h3 x-text="langIsFa ? 'اطلاعات شخصی' : 'Personal Info'" class="text-2xl font-medium my-5 dark:text-white"></h3>
                             <section class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                 <section class="flex">
                                     <span
-                                        class="text-red-500 dark:bg-slate-700 shadow-md mr-2.5 flex items-center justify-center rounded-md text-2xl w-12 min-w-[3rem] h-12">
+                                        class="text-red-500 dark:bg-slate-700 bg-red-50 me-2.5 flex items-center justify-center rounded-md text-2xl size-12 min-w-[3rem]">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            stroke-width="1.5" stroke="currentColor" class="size-6">
                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                 d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
                                         </svg>
                                     </span>
                                     <section class="space-y-1 overflow-hidden">
-                                        <p class="text-xs text-slate-500 dark:text-slate-300">Phone</p>
+                                        <p x-text="langIsFa ? 'شماره همراه' : 'Phone'" class="text-xs text-slate-500 dark:text-slate-300"></p>
                                         <h6 class="font-medium dark:text-white truncate">
-                                            <a class="hover:text-[#3a9bdc] duration-300 transition"
-                                                href="tel:+989022218241">+98 902 221 8241</a>
+                                            <a class="hover:text-[#3a9bdc] duration-300 transition" :class="langIsFa && 'font-fa-number'" :dir="langIsFa && 'ltr'" href="tel:+989022218241">+98 902 221 8241</a>
                                         </h6>
                                     </section>
                                 </section>
                                 <section class="flex">
                                     <span
-                                        class="text-purple-500 dark:bg-slate-700 shadow-md mr-2.5 flex items-center justify-center rounded-md text-2xl w-12 min-w-[3rem] h-12">
+                                        class="text-purple-500 dark:bg-slate-700 bg-purple-50 me-2.5 flex items-center justify-center rounded-md text-2xl size-12 min-w-[3rem]">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            stroke-width="1.5" stroke="currentColor" class="size-6">
                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                 d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -991,40 +244,40 @@
                                         </svg>
                                     </span>
                                     <section class="space-y-1 overflow-hidden">
-                                        <p class="text-xs text-slate-500 dark:text-slate-300">Location</p>
-                                        <h6 class="font-medium dark:text-white truncate">IRAN Bandar-Abbas</h6>
+                                        <p x-text="langIsFa ? 'محل زندگی' : 'Location'" class="text-xs text-slate-500 dark:text-slate-300"></p>
+                                        <h6 x-text="langIsFa ? 'هرمزگان - بندرعباس' : 'IRAN Bandar-Abbas'" class="font-medium dark:text-white truncate"></h6>
                                     </section>
                                 </section>
                                 <section class="flex">
                                     <span
-                                        class="text-teal-500 dark:bg-slate-700 shadow-md mr-2.5 flex items-center justify-center rounded-md text-2xl w-12 min-w-[3rem] h-12">
+                                        class="text-teal-500 dark:bg-slate-700 bg-teal-50 me-2.5 flex items-center justify-center rounded-md text-2xl size-12 min-w-[3rem]">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            stroke-width="1.5" stroke="currentColor" class="size-6">
                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                 d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                                         </svg>
                                     </span>
                                     <section class="space-y-1 overflow-hidden">
-                                        <p class="text-xs text-slate-500 dark:text-slate-300">Email</p>
+                                        <p x-text="langIsFa ? 'ایمیل' : 'Email'" class="text-xs text-slate-500 dark:text-slate-300"></p>
                                         <h6 class="font-medium dark:text-white truncate"> <a
                                                 class="hover:text-[#3a9bdc] duration-300 transition"
-                                                href="mailto:aminfo.website.ir@gmail.com">aminfo.website.ir@gmail.com</a>
+                                                href="mailto:mohaminforati@gmail.com">mohaminforati@gmail.com</a>
                                         </h6>
                                     </section>
                                 </section>
                                 <section class="flex">
                                     <span
-                                        class="text-yellow-500 dark:bg-slate-700 shadow-md mr-2.5 flex items-center justify-center rounded-md text-2xl w-12 min-w-[3rem] h-12">
+                                        class="text-yellow-500 dark:bg-slate-700 bg-yellow-50 me-2.5 flex items-center justify-center rounded-md text-2xl size-12 min-w-[3rem]">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            stroke-width="1.5" stroke="currentColor" class="size-6">
                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                 d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
                                         </svg>
                                     </span>
                                     <section class="space-y-1 overflow-hidden">
-                                        <p class="text-xs text-slate-500 dark:text-slate-300">Birthday</p>
-                                        <h6 class="font-medium dark:text-white truncate">Aug 09, 2005 <small>(Born in
-                                                Tehran)</small></h6>
+                                        <p x-text="langIsFa ? 'تولد' : 'Birthday'" class="text-xs text-slate-500 dark:text-slate-300"></p>
+                                        <h6 x-show="langIsFa" class="font-medium dark:text-white truncate font-fa-number">18 مرداد 1384 <small>(تهران)</small></h6>
+                                        <h6 x-show="!langIsFa" class="font-medium dark:text-white truncate">Aug 09, 2005 <small>(Born in Tehran)</small></h6>
                                     </section>
                                 </section>
                             </section>
@@ -1034,41 +287,41 @@
 
                 <section class="grid-cols-12 sm:px-20 px-4">
                     <section class="pb-12">
-                        <h3 class="text-[35px] dark:text-white font-medium pb-5">What I do!</h3>
+                        <h3 x-text="langIsFa ? 'کاری که من می کنم!' : 'What I do!'" class="text-[35px] dark:text-white font-medium pb-5"></h3>
                         <section class="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
                             <section
-                                class="flex gap-4 rounded-xl p-6 bg-[#fcf4ff] dark:bg-transparent dark:border-2 border-slate-700 md:col-span-1">
-                                <img src="./images/icon-1.svg" class="w-10 h-10 object-contain block" loading="lazy">
-                                <section class="space-y-2 break-all">
-                                    <h3 class="dark:text-white text-xl font-semibold">Web Design</h3>
-                                    <p class="leading-8 text-slate-500 dark:text-[#A6A6A6]">Designing the appearance of
-                                        your site according to your desired design. With clean coding and the latest
-                                        technologies
-                                        for website design.</p>
+                                class="flex gap-4 rounded-xl p-6 bg-teal-50 dark:bg-transparent dark:border-2 border-teal-700/60 md:col-span-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" class="size-10 shrink-0 fill-teal-500">
+                                    <path d="M7.5 33.75c.365 0 .651-.104.86-.313.26-.26.39-.572.39-.937 0-.365-.13-.651-.39-.86-.209-.26-.495-.39-.86-.39s-.677.13-.938.39c-.208.209-.312.495-.312.86s.104.677.313.938c.26.208.572.312.937.312Zm30-8.75H25.625l8.36-8.438c.52-.468.78-1.041.78-1.718 0-.73-.26-1.328-.78-1.797l-7.032-7.031c-.469-.521-1.068-.782-1.797-.782-.677 0-1.25.26-1.718.782L15 14.375V2.5c0-.677-.26-1.25-.781-1.719C13.75.261 13.177 0 12.5 0h-10C1.823 0 1.224.26.703.781A2.338 2.338 0 0 0 0 2.5v30c0 2.083.73 3.854 2.188 5.313C3.646 39.27 5.417 40 7.5 40h30c.677 0 1.25-.26 1.719-.781.52-.469.781-1.042.781-1.719v-10c0-.677-.26-1.25-.781-1.719-.469-.52-1.042-.781-1.719-.781Zm-25 7.5c0 1.354-.495 2.526-1.484 3.516-.99.99-2.162 1.484-3.516 1.484s-2.526-.495-3.516-1.484c-.99-.99-1.484-2.162-1.484-3.516v-10h10v10Zm0-12.5h-10v-7.5h10V20Zm0-10h-10V2.5h10V10Zm2.5 7.89L25.156 7.735l7.11 7.11L15 32.109V17.891ZM37.5 37.5H13.125l10-10H37.5v10Z"/>
+                                </svg>
+                                <section class="space-y-2 mt-2">
+                                    <h3 class="dark:text-white text-xl font-semibold" x-text="langIsFa ? 'طراحی وب' : 'Web Design'"></h3>
+                                    <p x-show="langIsFa" class="leading-8 text-slate-500 dark:text-[#A6A6A6] text-justify">طراحی رابط کاربری (UI) مدرن و حرفه‌ای بر اساس نیازهای شما، همراه با کدنویسی بهینه و مطابق با استانداردهای جهانی.</p>
+                                    <p x-show="!langIsFa" class="leading-8 text-slate-500 dark:text-[#A6A6A6] text-justify">Crafting modern and user-friendly UI/UX designs tailored to your needs, with clean, optimized code and industry-leading standards.</p>
                                 </section>
                             </section>
 
                             <section
-                                class="flex gap-4 rounded-xl p-6 bg-[#fefaf0] dark:bg-transparent dark:border-2 border-slate-700 md:col-span-1">
-                                <img src="./images/icon-6.svg" class="w-10 h-10 object-contain block" loading="lazy">
-                                <section class="space-y-2 break-all">
-                                    <h3 class="dark:text-white text-xl font-semibold">Web Development</h3>
-                                    <p class="leading-8 text-slate-500 dark:text-[#A6A6A6]">Mastermind design of your
-                                        site. For all kinds of news, store, personal, blog, etc. sites. With the latest
-                                        technologies
-                                        in the world.</p>
+                                class="flex gap-4 rounded-xl p-6 bg-sky-50 dark:bg-transparent dark:border-2 border-sky-700/60 md:col-span-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 42" class="size-10 shrink-0 fill-sky-500">
+                                    <path d="m18.36 41-3.047-.938a.753.753 0 0 1-.391-.312c-.052-.104-.078-.26-.078-.469L25.859 1.47a.753.753 0 0 1 .313-.39.517.517 0 0 1 .468-.08l3.047.938c.156 0 .26.078.312.234a.962.962 0 0 1 .156.547L19.141 40.53a.753.753 0 0 1-.313.39.517.517 0 0 1-.469.079Zm-6.485-9.453 2.11-2.266a.84.84 0 0 0 .156-.468.53.53 0 0 0-.235-.47L5.625 21l8.281-7.344c.156-.104.235-.234.235-.39a.963.963 0 0 0-.157-.547l-2.109-2.266a.84.84 0 0 0-.469-.156.84.84 0 0 0-.469.156L.235 20.531C.078 20.688 0 20.844 0 21c0 .156.078.313.234.469l10.704 10.078a.84.84 0 0 0 .468.156.84.84 0 0 0 .469-.156Zm22.188 0 10.703-10.078c.156-.157.234-.313.234-.469 0-.156-.078-.313-.234-.469L34.063 10.453a.84.84 0 0 0-.47-.156.84.84 0 0 0-.468.156l-2.11 2.266a.963.963 0 0 0-.156.547c0 .156.078.286.235.39L39.375 21l-8.281 7.344c-.157.104-.235.26-.235.468a.84.84 0 0 0 .157.47l2.109 2.265a.84.84 0 0 0 .469.156.84.84 0 0 0 .468-.156Z"/>
+                                </svg>
+                                <section class="space-y-2 mt-2">
+                                    <h3 class="dark:text-white text-xl font-semibold" x-text="langIsFa ? 'توسعه وب' : 'Web Development'"></h3>
+                                    <p x-show="langIsFa" class="leading-8 text-slate-500 dark:text-[#A6A6A6] text-justify">پیاده‌سازی و توسعه انواع وب‌سایت‌های خبری، فروشگاهی، شخصی و شرکتی با استفاده از تکنولوژی‌های روز و معماری‌های مقیاس‌پذیر.</p>
+                                    <p x-show="!langIsFa" class="leading-8 text-slate-500 dark:text-[#A6A6A6] text-justify">Developing high-performance websites for news, e-commerce, personal, and corporate needs using cutting-edge technologies and scalable architectures.</p>
                                 </section>
                             </section>
 
                             <section
-                                class="flex gap-4 rounded-xl p-6 bg-[#fcf4ff] dark:bg-transparent dark:border-2 border-slate-700 md:col-span-2 xl:col-span-1">
-                                <img src="./images/icon-5.svg" class="w-10 h-10 object-contain block" loading="lazy">
-                                <section class="space-y-2 break-all">
-                                    <h3 class="dark:text-white text-xl font-semibold">Full Stack</h3>
-                                    <p class="leading-8 text-slate-500 dark:text-[#A6A6A6]">I can design a complete site
-                                        for you. In addition to a beautiful appearance, I have the ability to design a
-                                        smart brain
-                                        with the fastest possible speed for your site.</p>
+                                class="flex gap-4 rounded-xl p-6 bg-purple-50 dark:bg-transparent dark:border-2 border-purple-700/60 md:col-span-2 xl:col-span-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 42" class="size-10 shrink-0 fill-purple-500">
+                                    <path d="M43.11 16.313 42.874 16a2.831 2.831 0 0 1-.938 0l-.234.313c-.208.364-.52.625-.937.78a1.795 1.795 0 0 1-1.172.079c-1.042-.365-1.927-.86-2.657-1.485a1.735 1.735 0 0 1-.703-1.015 2.332 2.332 0 0 1 .235-1.328l.234-.313a2.765 2.765 0 0 1-.469-.86h-.703c-.468 0-.885-.13-1.25-.39a2.318 2.318 0 0 1-.625-1.094 7.505 7.505 0 0 1 0-3.046c.104-.417.313-.756.625-1.016a1.866 1.866 0 0 1 1.25-.469h.703c.105-.312.26-.599.47-.86l-.235-.39a1.842 1.842 0 0 1-.235-1.172 2.34 2.34 0 0 1 .625-1.171 9.441 9.441 0 0 1 2.657-1.485 1.725 1.725 0 0 1 1.25 0c.416.156.729.443.937.86l.234.312h.938l.234-.313c.209-.416.521-.703.938-.859a1.725 1.725 0 0 1 1.25 0 7.43 7.43 0 0 1 2.656 1.484c.313.313.495.704.547 1.172.104.417.052.834-.156 1.25l-.235.313c.209.26.365.547.47.86h.468c.417 0 .781.155 1.094.468.364.26.599.599.703 1.016.208.99.208 2.005 0 3.046-.104.417-.339.782-.703 1.094-.313.26-.703.39-1.172.39h-.39c-.105.313-.261.6-.47.86l.235.313c.208.416.26.86.156 1.328-.052.416-.26.781-.625 1.094-.73.572-1.615 1.041-2.656 1.406a2.061 2.061 0 0 1-1.25-.078 1.783 1.783 0 0 1-.86-.782Zm.937-2.657.781 1.406a6.104 6.104 0 0 0 1.484-.859l-.78-1.406.468-.547a6.11 6.11 0 0 0 .86-1.484l.234-.782h1.64a4.346 4.346 0 0 0 0-1.64h-1.64l-.235-.781A6.11 6.11 0 0 0 46 6.077l-.469-.547.782-1.484a5.709 5.709 0 0 0-1.485-.781l-.781 1.406-.781-.156a4.766 4.766 0 0 0-1.72 0l-.78.156-.782-1.406a8.077 8.077 0 0 0-1.484.78l.86 1.485-.547.547a6.11 6.11 0 0 0-.86 1.484l-.234.782h-1.64a4.346 4.346 0 0 0 0 1.64h1.64l.234.704c.208.572.495 1.093.86 1.562l.546.547-.859 1.406a4.63 4.63 0 0 0 1.484.86l.782-1.407.78.156a4.764 4.764 0 0 0 1.72 0l.78-.156ZM12.328 36.47v-2.422a12.789 12.789 0 0 1-2.812-1.64l-2.188 1.25c-.364.208-.781.286-1.25.234a1.876 1.876 0 0 1-1.016-.625c-.99-1.042-1.796-2.084-2.421-3.125-.573-1.042-1.094-2.292-1.563-3.75a2.06 2.06 0 0 1 .078-1.25c.157-.417.417-.73.782-.938l2.109-1.25a17.265 17.265 0 0 1 0-3.281l-2.11-1.25a1.747 1.747 0 0 1-.78-.938 2.06 2.06 0 0 1-.079-1.25c.469-1.458.99-2.708 1.563-3.75.625-1.041 1.432-2.083 2.421-3.125.26-.312.6-.494 1.016-.546.469-.105.886-.053 1.25.156l2.188 1.25a14.767 14.767 0 0 1 2.812-1.64V6.155c0-.468.13-.86.39-1.172.313-.364.678-.599 1.095-.703 1.406-.312 2.708-.468 3.906-.468s2.552.156 4.062.468c.417.104.756.339 1.016.703.312.313.469.704.469 1.172v2.422c.99.417 1.927.964 2.812 1.64l2.11-1.25c.416-.208.833-.26 1.25-.155.468.052.833.234 1.093.546 1.042 1.146 1.875 2.266 2.5 3.36.625 1.041 1.146 2.213 1.563 3.515.156.417.156.834 0 1.25-.157.417-.417.73-.782.938l-1.953 1.25a11.546 11.546 0 0 1 0 3.281l2.188 1.406c.364.209.625.495.781.86.156.364.182.729.078 1.093-.416 1.98-1.875 4.297-4.375 6.954-.312.312-.677.52-1.093.625a2.152 2.152 0 0 1-1.25-.235l-2.11-1.25a18.89 18.89 0 0 1-2.812 1.64v2.5c0 .418-.157.782-.47 1.095-.26.364-.598.599-1.015.703-1.458.312-2.786.468-3.984.468s-2.526-.156-3.985-.468c-.416-.104-.78-.339-1.093-.703-.26-.313-.39-.703-.39-1.172Zm2.5-.469c1.98.417 3.959.417 5.938 0v-3.75l.78-.234a10.394 10.394 0 0 0 3.595-2.11l.703-.547 3.203 1.875c1.719-1.927 2.812-3.62 3.281-5.078l-3.203-1.875.156-.937c.26-1.354.26-2.735 0-4.14l-.156-.86 3.203-1.875c-.469-1.459-1.562-3.151-3.281-5.078l-3.203 1.875-.703-.547a10.394 10.394 0 0 0-3.594-2.11l-.781-.312V6.625a14.258 14.258 0 0 0-5.938 0v3.672l-.781.312a10.394 10.394 0 0 0-3.594 2.11l-.703.547-3.203-1.875a14.208 14.208 0 0 0-2.969 5.156l3.203 1.797-.156.86a11.488 11.488 0 0 0 0 4.218l.156.86-3.203 1.874a14.33 14.33 0 0 0 2.969 5.078L9.75 29.36l.703.547c1.042.938 2.24 1.64 3.594 2.11l.781.312V36Zm3.047-8.203c-1.823 0-3.36-.625-4.61-1.875-1.25-1.302-1.874-2.839-1.874-4.61 0-1.77.625-3.28 1.875-4.53 1.25-1.303 2.76-1.954 4.53-1.954 1.824 0 3.36.651 4.61 1.953 1.302 1.25 1.953 2.76 1.953 4.532 0 1.77-.65 3.307-1.953 4.609-1.25 1.25-2.76 1.875-4.531 1.875Zm0-10.469c-1.094 0-2.031.39-2.813 1.172-.78.781-1.171 1.719-1.171 2.813 0 1.093.39 2.03 1.171 2.812.782.781 1.72 1.172 2.813 1.172 1.094 0 2.031-.39 2.813-1.172.78-.781 1.171-1.719 1.171-2.813 0-1.093-.39-2.03-1.172-2.812-.78-.781-1.718-1.172-2.812-1.172Zm25.234 22.813-.234-.313h-.938l-.234.313c-.208.364-.52.599-.937.703a1.795 1.795 0 0 1-1.172.078c-1.042-.313-1.927-.781-2.657-1.406a2.106 2.106 0 0 1-.703-1.172 2.152 2.152 0 0 1 .235-1.25l.234-.313a3.107 3.107 0 0 1-.469-.781h-.703c-.468 0-.885-.13-1.25-.39a2.333 2.333 0 0 1-.625-1.172 7.505 7.505 0 0 1 0-3.047c.104-.417.313-.756.625-1.016a1.867 1.867 0 0 1 1.25-.469h.703c.105-.312.26-.599.47-.86l-.235-.312a2.152 2.152 0 0 1-.235-1.25c.105-.468.313-.833.625-1.093a7.43 7.43 0 0 1 2.657-1.485 1.726 1.726 0 0 1 1.25 0c.416.157.729.417.937.782l.234.39a2.84 2.84 0 0 1 .938 0l.234-.39c.209-.365.521-.625.938-.782a1.726 1.726 0 0 1 1.25 0 7.43 7.43 0 0 1 2.656 1.485c.313.26.495.625.547 1.093.104.417.052.834-.156 1.25l-.235.313c.209.26.365.547.47.86h.468a1.5 1.5 0 0 1 1.094.468c.364.26.599.625.703 1.094a7.13 7.13 0 0 1 0 2.968c-.104.47-.339.86-.703 1.172-.313.26-.703.391-1.172.391h-.39c-.105.26-.261.52-.47.781l.235.313c.208.416.26.833.156 1.25-.052.468-.26.86-.625 1.172-.73.625-1.615 1.093-2.656 1.406a2.061 2.061 0 0 1-1.25-.078c-.365-.104-.651-.339-.86-.703Zm.938-2.735.781 1.407a8.065 8.065 0 0 0 1.484-.782l-.78-1.484L46 36a6.11 6.11 0 0 0 .86-1.484l.234-.782h1.64a4.346 4.346 0 0 0 0-1.64h-1.64l-.235-.703A4.632 4.632 0 0 0 46 29.906l-.469-.625.782-1.406a4.632 4.632 0 0 0-1.485-.86l-.781 1.407-.781-.156a4.768 4.768 0 0 0-1.72 0l-.78.156-.782-1.406a6.11 6.11 0 0 0-1.484.859l.86 1.406-.547.625a6.111 6.111 0 0 0-.86 1.485l-.234.703h-1.64a4.346 4.346 0 0 0 0 1.64h1.64l.234.782a6.11 6.11 0 0 0 .86 1.484l.546.547-.859 1.484c.417.313.911.573 1.484.782l.782-1.407.78.157a4.764 4.764 0 0 0 1.72 0l.78-.157Zm.703-4.531c0-.677-.26-1.25-.781-1.719-.469-.52-1.042-.781-1.719-.781s-1.276.26-1.797.781a2.338 2.338 0 0 0-.703 1.719c0 .677.234 1.276.703 1.797.521.469 1.12.703 1.797.703.677 0 1.25-.234 1.719-.703.52-.521.781-1.12.781-1.797Zm0-23.75c0-.73-.26-1.328-.781-1.797a2.338 2.338 0 0 0-1.719-.703c-.677 0-1.276.234-1.797.703-.469.469-.703 1.068-.703 1.797 0 .677.234 1.276.703 1.797.521.469 1.12.703 1.797.703.677 0 1.25-.234 1.719-.703.52-.521.781-1.12.781-1.797Z"/>
+                                </svg>
+                                <section class="space-y-2 mt-2">
+                                    <h3 class="dark:text-white text-xl font-semibold" x-text="langIsFa ? 'فول‌استک' : 'Full Stack'"></h3>
+                                    <p x-show="langIsFa" class="leading-8 text-slate-500 dark:text-[#A6A6A6] text-justify">ارائه راهکارهای کامل از طراحی تا توسعه بک‌اند، شامل ساختارهای بهینه، امنیت بالا، و سرعت پردازش فوق‌العاده برای پروژه‌های تحت وب.</p>
+                                    <p x-show="!langIsFa" class="leading-8 text-slate-500 dark:text-[#A6A6A6] text-justify">Delivering end-to-end solutions from frontend to backend, ensuring high performance, security, and seamless user experience.</p>
                                 </section>
                             </section>
 
@@ -1089,62 +342,84 @@
                     </section>
                 </section> -->
 
-                <section
-                    class="bg-[#F8FBFB] dark:bg-slate-900 h-20 text-center flex items-center sm:rounded-b-2xl justify-center text-slate-400 dark:text-slate-400">
-                    <p>©2023 All Rights Reserved by aminfo.</p>
+                <section class="bg-[#F8FBFB] dark:bg-slate-900 h-20 text-center flex items-center sm:rounded-b-2xl justify-center text-slate-400 dark:text-slate-400" :class="langIsFa && 'font-fa-number'">
+                    <p x-text="langIsFa ? '© 1403 تمامی حقوق برای محمد امین فراتی محفوظ است.' : '© 2025 All Rights Reserved by aminfo.'"></p>
                 </section>
             </section>
         </section>
 
-        <section x-show="activeTab === 2"
-            class="container flex flex-col justify-center items-center gap-5 sm:mt-10 lg:mt-0"
+        <section x-show="activeTab === 2" class="container flex flex-col justify-center items-center gap-5 sm:mt-10 lg:mt-0"
             x-transition:enter="transition ease-out duration-300 origin-top"
             x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100" x-cloak>
             <section class="bg-white dark:bg-slate-800 sm:rounded-2xl sm:mx-10 w-full lg:w-10/12">
                 <section class="py-6 sm:py-12 px-4 sm:px-20">
-                    <h2
-                        class="relative salb text-black dark:text-white inline-block text-4xl font-semibold after:w-0 sm:after:w-64 after:h-[1.5px] after:absolute after:left-48 after:top-6 after:bg-gradient-to-r after:from-[#29c5f6] after:to-[#3a9bdc] after:rounded-full">
-                        Resium</h2>
+                    <h2 x-text="langIsFa ? 'رزومه' : 'Resume'" :class="langIsFa || 'salb'" class="relative text-black dark:text-white flex items-center gap-8 text-4xl font-semibold after:w-0 sm:after:w-64 after:h-[1.5px] after:bg-gradient-to-r after:from-[#29c5f6] after:to-[#3a9bdc] after:rounded-full"></h2>
                 </section>
 
                 <section class="px-4 sm:px-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-6 ">
                     <section>
                         <section class="flex items-center space-x-2 mb-4">
                             <section class="text-[#3a9bdc]">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-7">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
                                 </svg>
-
                             </section>
-                            <h4 class="text-3xl dark:text-white font-medium">Education</h4>
+                            <h4 class="text-3xl dark:text-white font-medium" x-text="langIsFa ? 'تحصیلات' : 'Education'"></h4>
                         </section>
                         <section
-                            class="py-4 pl-5 pr-3 space-y-2 mb-6 rounded-lg dark:border-slate-700 dark:border-2 bg-[#fff4f4] dark:bg-transparent">
-                            <span class="text-sm text-slate-500 dark:text-[#b7b7b7]">2022-2023</span>
-                            <h3 class="text-xl dark:text-white"> Dip in Network and Software </h3>
-                            <p class="dark:text-[#b7b7b7]">Shahid Dara Technical and Vocational College, Bandar Abbas,
-                                IR</p>
+                            class="py-4 pe-5 ps-3 space-y-2 mb-6 rounded-lg dark:border-rose-700/40 dark:border-2 bg-rose-50 dark:bg-transparent">
+                            <span class="text-sm text-slate-500 dark:text-[#b7b7b7]" :class="langIsFa && 'font-fa-number'" x-text="langIsFa ? '1402 - اکنون' : '2023 - Present'"></span>
+                            <h3 class="text-xl dark:text-white font-medium" x-text="langIsFa ? 'کاردانی کامپیوتر - نرم‌افزار' : 'Associate Degree in Computer – Software'"></h3>
+                            <p class="dark:text-[#b7b7b7]" x-text="langIsFa ? 'دانشکده ملی مهارت شهید کُرانی بندرعباس' : 'National University of Skills, Bandar Abbas, IR'"></p>
+                        </section>
+                        <section
+                            class="py-4 pe-5 ps-3 space-y-2 mb-6 rounded-lg dark:border-teal-700/40 dark:border-2 bg-teal-50 dark:bg-transparent">
+                            <span class="text-sm text-slate-500 dark:text-[#b7b7b7]" :class="langIsFa && 'font-fa-number'" x-text="langIsFa ? '1401 - 1402' : '2022 - 2023'"></span>
+                            <h3 class="text-xl dark:text-white font-medium" x-text="langIsFa ? 'دیپلم شبکه و نرم‌افزار' : 'High School Diploma in Computer Networks and Software'"></h3>
+                            <p class="dark:text-[#b7b7b7]" x-text="langIsFa ? 'هنرستان نمونه دولتی فنی و حرفه‌ای شهید دارا بندرعباس' : 'Shahid Dara Technical and Vocational School, Bandar Abbas, IR'"></p>
                         </section>
                     </section>
 
                     <section>
                         <section class="flex items-center space-x-2 mb-4">
                             <section class="text-[#3a9bdc]">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-7">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
                                 </svg>
                             </section>
-                            <h4 class="text-3xl dark:text-white font-medium">Experience</h4>
+                            <h4 class="text-3xl dark:text-white font-medium" x-text="langIsFa ? 'سوابق کاری' : 'Experience'"></h4>
                         </section>
                         <section
-                            class="py-4 pl-5 pr-3 space-y-2 mb-6 rounded-lg dark:border-slate-700 dark:border-2 bg-[#eef5fa] dark:bg-transparent">
-                            <span class="text-sm text-slate-500 dark:text-[#b7b7b7]">2022 - Present</span>
-                            <h3 class="text-xl dark:text-white"> Naieb Shahid </h3>
-                            <p class="dark:text-[#b7b7b7]"> Designing the admin and users dashboard page </p>
+                            class="py-4 pe-5 ps-3 space-y-2 mb-6 rounded-lg dark:border-sky-700/40 dark:border-2 bg-sky-50 dark:bg-transparent">
+                            <span class="text-sm text-slate-500 dark:text-[#b7b7b7]" :class="langIsFa && 'font-fa-number'" x-text="langIsFa ? '1402 - 1403' : '2023 - 2024'"></span>
+                            <h3 class="text-xl dark:text-white font-medium" x-text="langIsFa ? 'ژیوانو' : 'Zhivano'"></h3>
+                            <p class="dark:text-[#b7b7b7]"> <span x-text="langIsFa ? 'طراحی وب' : 'Web Design'"></span> - 
+                                <a href="https://zhivano.com" target="_blank" class="text-sky-600 hover:underline inline-flex items-center">
+                                    zhivano.com
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4 ltr:scale-x-[-1]">
+                                        <path fill-rule="evenodd" d="M11.78 11.78a.75.75 0 0 0 0-1.06L6.56 5.5h3.69a.75.75 0 0 0 0-1.5h-5.5a.75.75 0 0 0-.75.75v5.5a.75.75 0 0 0 1.5 0V6.56l5.22 5.22a.75.75 0 0 0 1.06 0Z" clip-rule="evenodd" />
+                                    </svg>
+                              </a> 
+                            </p>
+                        </section>
+                        <section
+                            class="py-4 pe-5 ps-3 space-y-2 mb-6 rounded-lg dark:border-amber-600/40 dark:border-2 bg-amber-50 dark:bg-transparent">
+                            <span class="text-sm text-slate-500 dark:text-[#b7b7b7]" :class="langIsFa && 'font-fa-number'" x-text="langIsFa ? '1403' : '2024'"></span>
+                            <h3 class="text-xl dark:text-white font-medium" x-text="langIsFa ? 'سایت شخصی سهیل سنگرزاده' : 'Soheil Sangerzadeh, personal website'"></h3>
+                            <p class="dark:text-[#b7b7b7]"> <span x-text="langIsFa ? 'طراحی وب' : 'Web Design'"></span> - 
+                                <a href="https://sangarzadeh.com" target="_blank" class="text-amber-500 hover:underline inline-flex items-center">
+                                    sangarzadeh.com 
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4 ltr:scale-x-[-1]">
+                                        <path fill-rule="evenodd" d="M11.78 11.78a.75.75 0 0 0 0-1.06L6.56 5.5h3.69a.75.75 0 0 0 0-1.5h-5.5a.75.75 0 0 0-.75.75v5.5a.75.75 0 0 0 1.5 0V6.56l5.22 5.22a.75.75 0 0 0 1.06 0Z" clip-rule="evenodd" />
+                                    </svg>
+                              </a> 
+                            </p>
+                        </section>
+                        <section
+                            class="py-4 pe-5 ps-3 space-y-2 mb-6 rounded-lg dark:border-amber-900/40 dark:border-2 bg-amber-900/10 dark:bg-transparent">
+                            <span class="text-sm text-slate-500 dark:text-[#b7b7b7]" :class="langIsFa && 'font-fa-number'" x-text="langIsFa ? '1403' : '2024'"></span>
+                            <h3 class="text-xl dark:text-white font-medium">Shelby Petroleum L.L.C - Dubai</h3>
+                            <p class="dark:text-[#b7b7b7]"> <span x-text="langIsFa ? 'فول‌استک' : 'Full-stack'"></span> - <span class="text-amber-700/40 italic">shelbypetroleum.ae</span> <span class="text-xs italic opacity-40" x-text="langIsFa ? '(پیوند در دسترس نیست)' : '(link unavailable)'"></span></p>
                         </section>
                     </section>
 
@@ -1152,19 +427,19 @@
                         <section class="flex items-center space-x-2 mb-4">
                             <section class="text-[#3a9bdc]">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
+                                    stroke-width="1.5" stroke="currentColor" class="size-7">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M7.73 9.728a6.726 6.726 0 002.748 1.35m8.272-6.842V4.5c0 2.108-.966 3.99-2.48 5.228m2.48-5.492a46.32 46.32 0 012.916.52 6.003 6.003 0 01-5.395 4.972m0 0a6.726 6.726 0 01-2.749 1.35m0 0a6.772 6.772 0 01-3.044 0" />
                                 </svg>
 
                             </section>
-                            <h4 class="text-3xl dark:text-white font-medium">Awards</h4>
+                            <h4 class="text-3xl dark:text-white font-medium"x-text="langIsFa ? 'دستاوردها' : 'Awards'"></h4>
                         </section>
                         <section
-                            class="py-4 pl-5 pr-3 space-y-2 mb-6 rounded-lg dark:border-slate-700 dark:border-2 bg-[#fcf4ff] dark:bg-transparent">
-                            <span class="text-sm text-slate-500 dark:text-[#b7b7b7]"> 2022 </span>
-                            <h3 class="text-xl dark:text-white"> Algorithmic thinking competitions </h3>
-                            <p class="dark:text-[#b7b7b7]">National official</p>
+                            class="py-4 pe-5 ps-3 space-y-2 mb-6 rounded-lg dark:border-indigo-700/40 dark:border-2 bg-indigo-50 dark:bg-transparent">
+                            <span class="text-sm text-slate-500 dark:text-[#b7b7b7]" :class="langIsFa && 'font-fa-number'" x-text="langIsFa ? '1401' : '2022'"></span>
+                            <h3 class="text-xl dark:text-white font-medium" x-text="langIsFa ? 'مسابقات تفکر الگوریتمی' : 'Algorithmic thinking competitions'"></h3>
+                            <p class="dark:text-[#b7b7b7]" x-text="langIsFa ? 'مقام نخست استانی' : 'Provincial first place'"></p>
                         </section>
                     </section>
                 </section>
@@ -1172,310 +447,240 @@
                 <section class="bg-[#f8fbfb] dark:bg-slate-900 dark:bg-opacity-60 py-12 px-4 sm:px-20">
                     <section class="grid grid-cols-1 gap-8">
                         <section class="col-span-1">
-                            <h4 class="text-3xl dark:text-white font-medium mb-8">Knowledges</h4>
+                            <h4 class="text-3xl dark:text-white font-medium mb-8" x-text="langIsFa ? 'دانش‌ها' : 'Knowledges'"></h4>
                             <section class="flex gap-x-3 gap-y-3 md:gap-y-3 md:gap-x-3 flex-wrap">
-                                <button
-                                    class="py-2 px-5 rounded-lg text-sm text-[#44566c] dark:text-[#a6a6a6] bg-[#edf2f2] dark:bg-slate-800 cursor-default">Media
-                                    Literacy</button>
-                                <button
-                                    class="py-2 px-5 rounded-lg text-sm text-[#44566c] dark:text-[#a6a6a6] bg-[#edf2f2] dark:bg-slate-800 cursor-default">Web
-                                    Design</button>
-                                <button
-                                    class="py-2 px-5 rounded-lg text-sm text-[#44566c] dark:text-[#a6a6a6] bg-[#edf2f2] dark:bg-slate-800 cursor-default">Web
-                                    Development</button>
-                                <button
-                                    class="py-2 px-5 rounded-lg text-sm text-[#44566c] dark:text-[#a6a6a6] bg-[#edf2f2] dark:bg-slate-800 cursor-default">Algorithmic
-                                    Thinking</button>
-                                <button
-                                    class="py-2 px-5 rounded-lg text-sm text-[#44566c] dark:text-[#a6a6a6] bg-[#edf2f2] dark:bg-slate-800 cursor-default">Time
-                                    Management</button>
-                                <button
-                                    class="py-2 px-5 rounded-lg text-sm text-[#44566c] dark:text-[#a6a6a6] bg-[#edf2f2] dark:bg-slate-800 cursor-default">Database
-                                    Analysis</button>
+                                <button class="py-2 px-5 rounded-lg text-sm text-[#44566c] dark:text-[#a6a6a6] bg-[#edf2f2] dark:bg-slate-800 cursor-default" x-text="langIsFa ? 'طراحی وب' : 'Web Design'"></button>
+                                <button class="py-2 px-5 rounded-lg text-sm text-[#44566c] dark:text-[#a6a6a6] bg-[#edf2f2] dark:bg-slate-800 cursor-default" x-text="langIsFa ? 'توسعه وب' : 'Web Development'"></button>
+                                <button class="py-2 px-5 rounded-lg text-sm text-[#44566c] dark:text-[#a6a6a6] bg-[#edf2f2] dark:bg-slate-800 cursor-default" x-text="langIsFa ? 'تفکر الگوریتمی' : 'Algorithmic Thinking'"></button>
+                                <button class="py-2 px-5 rounded-lg text-sm text-[#44566c] dark:text-[#a6a6a6] bg-[#edf2f2] dark:bg-slate-800 cursor-default" x-text="langIsFa ? 'سواد رسانه‌ای' : 'Media Literacy'"></button>
+                                <!-- <button class="py-2 px-5 rounded-lg text-sm text-[#44566c] dark:text-[#a6a6a6] bg-[#edf2f2] dark:bg-slate-800 cursor-default" x-text="langIsFa ? '' : 'Time Management'"></button> -->
+                                <button class="py-2 px-5 rounded-lg text-sm text-[#44566c] dark:text-[#a6a6a6] bg-[#edf2f2] dark:bg-slate-800 cursor-default" x-text="langIsFa ? 'تحلیل پایگاه داده' : 'Database Analysis'"></button>
                             </section>
                         </section>
 
                         <section class="col-span-1">
-                            <h4 class="text-3xl dark:text-white font-medium mb-6">Working Skills</h4>
+                            <h4 class="text-3xl dark:text-white font-medium mb-6" x-text="langIsFa ? 'مهارت‌ها' : 'Skills'"></h4>
                             <section class="md:grid grid-cols-2 gap-4 md:gap-x-10">
                                 <section class="md:col-span-1 mb-7">
                                     <section class="flex justify-between py-1">
                                         <span
-                                            class="text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">PHP</span>
+                                            class="flex items-center gap-1 text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">PHP <span class="italic text-xs text-slate-400/40 ms-2">8.4</span></span>
                                         <span
-                                            class="text-base font-semibold text-slate-500 pr-5 dark:text-[#A6A6A6]">70%</span>
+                                            class="text-base font-semibold text-slate-500 ps-5 dark:text-[#A6A6A6]" :class="langIsFa && 'font-fa-number'">70%</span>
                                     </section>
-                                    <svg class="rc-progress-line" viewBox="0 0 100 1" preserveAspectRatio="none">
-                                        <path class="rc-progress-line-trail" d="M 0.5,0.5 L 99.5,0.5"
-                                            stroke-linecap="round" stroke="#D9D9D9" stroke-width="1" fill-opacity="0">
-                                        </path>
-                                        <path class="rc-progress-line-path" d="M 0.5,0.5 L 99.5,0.5"
-                                            stroke-linecap="round" stroke="#4f5b93" stroke-width="1" fill-opacity="0"
-                                            style="stroke-dasharray: 70px, 100px; stroke-dashoffset: 0px; transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray 0.3s ease 0s, stroke 0.3s linear 0s, 0.06s;">
-                                        </path>
-                                    </svg>
+                                    <div class="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="w-70/100 h-1.5 bg-[#4f5b93] rounded-e-full"></div>
+                                    </div>
                                 </section>
 
                                 <section class="md:col-span-1 mb-7">
                                     <section class="flex justify-between py-1">
                                         <span
-                                            class="text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">Laravel</span>
+                                            class="flex items-center gap-1 text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">Laravel <span x-show="langIsFa"> - لاراول</span><span class="italic text-xs text-slate-400/40 ms-2">11.6</span></span>
                                         <span
-                                            class="text-base font-semibold text-slate-500 pr-5 dark:text-[#A6A6A6]">40%</span>
+                                            class="text-base font-semibold text-slate-500 ps-5 dark:text-[#A6A6A6]" :class="langIsFa && 'font-fa-number'">60%</span>
                                     </section>
-                                    <svg class="rc-progress-line" viewBox="0 0 100 1" preserveAspectRatio="none">
-                                        <path class="rc-progress-line-trail" d="M 0.5,0.5 L 99.5,0.5"
-                                            stroke-linecap="round" stroke="#D9D9D9" stroke-width="1" fill-opacity="0">
-                                        </path>
-                                        <path class="rc-progress-line-path" d="M 0.5,0.5 L 99.5,0.5"
-                                            stroke-linecap="round" stroke="#f9322c" stroke-width="1" fill-opacity="0"
-                                            style="stroke-dasharray: 40px, 100px; stroke-dashoffset: 0px; transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray 0.3s ease 0s, stroke 0.3s linear 0s, 0.06s;">
-                                        </path>
-                                    </svg>
+                                    <div class="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="w-60/100 h-1.5 bg-[#f9322c] rounded-e-full"></div>
+                                    </div>
                                 </section>
 
                                 <section class="md:col-span-1 mb-7">
                                     <section class="flex justify-between py-1">
                                         <span
-                                            class="text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">Livewire</span>
+                                            class="flex items-center gap-1 text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">Livewire <span x-show="langIsFa"> - لایووایر</span><span class="italic text-xs text-slate-400/40 ms-2">3.5</span></span>
                                         <span
-                                            class="text-base font-semibold text-slate-500 pr-5 dark:text-[#A6A6A6]">95%</span>
+                                            class="text-base font-semibold text-slate-500 ps-5 dark:text-[#A6A6A6]" :class="langIsFa && 'font-fa-number'">95%</span>
                                     </section>
-                                    <svg class="rc-progress-line" viewBox="0 0 100 1" preserveAspectRatio="none">
-                                        <path class="rc-progress-line-trail" d="M 0.5,0.5 L 99.5,0.5"
-                                            stroke-linecap="round" stroke="#D9D9D9" stroke-width="1" fill-opacity="0">
-                                        </path>
-                                        <path class="rc-progress-line-path" d="M 0.5,0.5 L 99.5,0.5"
-                                            stroke-linecap="round" stroke="#fb70a9" stroke-width="1" fill-opacity="0"
-                                            style="stroke-dasharray: 95px, 100px; stroke-dashoffset: 0px; transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray 0.3s ease 0s, stroke 0.3s linear 0s, 0.06s;">
-                                        </path>
-                                    </svg>
+                                    <div class="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="w-95/100 h-1.5 bg-[#fb70a9] rounded-e-full"></div>
+                                    </div>
                                 </section>
 
                                 <section class="md:col-span-1 mb-7">
                                     <section class="flex justify-between py-1">
                                         <span
-                                            class="text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">HTML</span>
+                                            class="flex items-center gap-1 text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">HTML5</span>
                                         <span
-                                            class="text-base font-semibold text-slate-500 pr-5 dark:text-[#A6A6A6]">90%</span>
+                                            class="text-base font-semibold text-slate-500 ps-5 dark:text-[#A6A6A6]" :class="langIsFa && 'font-fa-number'">90%</span>
                                     </section>
-                                    <svg class="rc-progress-line" viewBox="0 0 100 1" preserveAspectRatio="none">
-                                        <path class="rc-progress-line-trail" d="M 0.5,0.5 L 99.5,0.5"
-                                            stroke-linecap="round" stroke="#D9D9D9" stroke-width="1" fill-opacity="0">
-                                        </path>
-                                        <path class="rc-progress-line-path" d="M 0.5,0.5 L 99.5,0.5"
-                                            stroke-linecap="round" stroke="#e44d26" stroke-width="1" fill-opacity="0"
-                                            style="stroke-dasharray: 90px, 100px; stroke-dashoffset: 0px; transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray 0.3s ease 0s, stroke 0.3s linear 0s, 0.06s;">
-                                        </path>
-                                    </svg>
+                                    <div class="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="w-90/100 h-1.5 bg-[#e44d26] rounded-e-full"></div>
+                                    </div>
                                 </section>
 
                                 <section class="md:col-span-1 mb-7">
                                     <section class="flex justify-between py-1">
                                         <span
-                                            class="text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">CSS</span>
+                                            class="flex items-center gap-1 text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">CSS3</span>
                                         <span
-                                            class="text-base font-semibold text-slate-500 pr-5 dark:text-[#A6A6A6]">85%</span>
+                                            class="text-base font-semibold text-slate-500 ps-5 dark:text-[#A6A6A6]" :class="langIsFa && 'font-fa-number'">85%</span>
                                     </section>
-                                    <svg class="rc-progress-line" viewBox="0 0 100 1" preserveAspectRatio="none">
-                                        <path class="rc-progress-line-trail" d="M 0.5,0.5 L 99.5,0.5"
-                                            stroke-linecap="round" stroke="#D9D9D9" stroke-width="1" fill-opacity="0">
-                                        </path>
-                                        <path class="rc-progress-line-path" d="M 0.5,0.5 L 99.5,0.5"
-                                            stroke-linecap="round" stroke="#006bc0" stroke-width="1" fill-opacity="0"
-                                            style="stroke-dasharray: 85px, 100px; stroke-dashoffset: 0px; transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray 0.3s ease 0s, stroke 0.3s linear 0s, 0.06s;">
-                                        </path>
-                                    </svg>
+                                    <div class="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="w-85/100 h-1.5 bg-[#006bc0] rounded-e-full"></div>
+                                    </div>
                                 </section>
 
                                 <section class="md:col-span-1 mb-7">
                                     <section class="flex justify-between py-1">
-                                        <span class="text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">Sass
-                                            (scss)</span>
+                                        <span class="flex items-center gap-1 text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">Sass (scss)</span>
                                         <span
-                                            class="text-base font-semibold text-slate-500 pr-5 dark:text-[#A6A6A6]">80%</span>
+                                            class="text-base font-semibold text-slate-500 ps-5 dark:text-[#A6A6A6]" :class="langIsFa && 'font-fa-number'">80%</span>
                                     </section>
-                                    <svg class="rc-progress-line" viewBox="0 0 100 1" preserveAspectRatio="none">
-                                        <path class="rc-progress-line-trail" d="M 0.5,0.5 L 99.5,0.5"
-                                            stroke-linecap="round" stroke="#D9D9D9" stroke-width="1" fill-opacity="0">
-                                        </path>
-                                        <path class="rc-progress-line-path" d="M 0.5,0.5 L 99.5,0.5"
-                                            stroke-linecap="round" stroke="#cc6699" stroke-width="1" fill-opacity="0"
-                                            style="stroke-dasharray: 80px, 100px; stroke-dashoffset: 0px; transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray 0.3s ease 0s, stroke 0.3s linear 0s, 0.06s;">
-                                        </path>
-                                    </svg>
+                                    <div class="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="w-80/100 h-1.5 bg-[#cc6699] rounded-e-full"></div>
+                                    </div>
                                 </section>
 
                                 <section class="md:col-span-1 mb-7">
                                     <section class="flex justify-between py-1">
                                         <span
-                                            class="text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">Javascript</span>
+                                            class="flex items-center gap-1 text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">Javascript <span x-show="langIsFa"> - جاوا اسکریپت</span></span>
                                         <span
-                                            class="text-base font-semibold text-slate-500 pr-5 dark:text-[#A6A6A6]">35%</span>
+                                            class="text-base font-semibold text-slate-500 ps-5 dark:text-[#A6A6A6]" :class="langIsFa && 'font-fa-number'">35%</span>
                                     </section>
-                                    <svg class="rc-progress-line" viewBox="0 0 100 1" preserveAspectRatio="none">
-                                        <path class="rc-progress-line-trail" d="M 0.5,0.5 L 99.5,0.5"
-                                            stroke-linecap="round" stroke="#D9D9D9" stroke-width="1" fill-opacity="0">
-                                        </path>
-                                        <path class="rc-progress-line-path" d="M 0.5,0.5 L 99.5,0.5"
-                                            stroke-linecap="round" stroke="#f7df1e" stroke-width="1" fill-opacity="0"
-                                            style="stroke-dasharray: 35px, 100px; stroke-dashoffset: 0px; transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray 0.3s ease 0s, stroke 0.3s linear 0s, 0.06s;">
-                                        </path>
-                                    </svg>
+                                    <div class="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="w-35/100 h-1.5 bg-[#f7df1e] rounded-e-full"></div>
+                                    </div>
                                 </section>
 
                                 <section class="md:col-span-1 mb-7">
                                     <section class="flex justify-between py-1">
                                         <span
-                                            class="text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">Tailwind
-                                            Css</span>
+                                            class="flex items-center gap-1 text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">Tailwind Css <span class="italic text-xs text-slate-400/40 ms-2">4</span></span>
                                         <span
-                                            class="text-base font-semibold text-slate-500 pr-5 dark:text-[#A6A6A6]">70%</span>
+                                            class="text-base font-semibold text-slate-500 ps-5 dark:text-[#A6A6A6]" :class="langIsFa && 'font-fa-number'">90%</span>
                                     </section>
-                                    <svg class="rc-progress-line" viewBox="0 0 100 1" preserveAspectRatio="none">
-                                        <path class="rc-progress-line-trail" d="M 0.5,0.5 L 99.5,0.5"
-                                            stroke-linecap="round" stroke="#D9D9D9" stroke-width="1" fill-opacity="0">
-                                        </path>
-                                        <path class="rc-progress-line-path" d="M 0.5,0.5 L 99.5,0.5"
-                                            stroke-linecap="round" stroke="#38bdf8" stroke-width="1" fill-opacity="0"
-                                            style="stroke-dasharray: 70px, 100px; stroke-dashoffset: 0px; transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray 0.3s ease 0s, stroke 0.3s linear 0s, 0.06s;">
-                                        </path>
-                                    </svg>
+                                    <div class="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="w-90/100 h-1.5 bg-[#38bdf8] rounded-e-full"></div>
+                                    </div>
                                 </section>
 
                                 <section class="md:col-span-1 mb-7">
                                     <section class="flex justify-between py-1">
                                         <span
-                                            class="text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">Bootstrap</span>
+                                            class="flex items-center gap-1 text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">Bootstrap <span x-show="langIsFa"> - بوت‌استرپ</span><span class="italic text-xs text-slate-400/40 ms-2">5</span></span>
                                         <span
-                                            class="text-base font-semibold text-slate-500 pr-5 dark:text-[#A6A6A6]">80%</span>
+                                            class="text-base font-semibold text-slate-500 ps-5 dark:text-[#A6A6A6]" :class="langIsFa && 'font-fa-number'">80%</span>
                                     </section>
-                                    <svg class="rc-progress-line" viewBox="0 0 100 1" preserveAspectRatio="none">
-                                        <path class="rc-progress-line-trail" d="M 0.5,0.5 L 99.5,0.5"
-                                            stroke-linecap="round" stroke="#D9D9D9" stroke-width="1" fill-opacity="0">
-                                        </path>
-                                        <path class="rc-progress-line-path" d="M 0.5,0.5 L 99.5,0.5"
-                                            stroke-linecap="round" stroke="#7609f6" stroke-width="1" fill-opacity="0"
-                                            style="stroke-dasharray: 85px, 100px; stroke-dashoffset: 0px; transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray 0.3s ease 0s, stroke 0.3s linear 0s, 0.06s;">
-                                        </path>
-                                    </svg>
+                                    <div class="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="w-80/100 h-1.5 bg-[#7609f6] rounded-e-full"></div>
+                                    </div>
                                 </section>
 
                                 <section class="md:col-span-1 mb-7">
                                     <section class="flex justify-between py-1">
                                         <span
-                                            class="text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">AlpineJS</span>
+                                            class="flex items-center gap-1 text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">AlpineJS <span class="italic text-xs text-slate-400/40 ms-2">3.14</span></span>
                                         <span
-                                            class="text-base font-semibold text-slate-500 pr-5 dark:text-[#A6A6A6]">65%</span>
+                                            class="text-base font-semibold text-slate-500 ps-5 dark:text-[#A6A6A6]" :class="langIsFa && 'font-fa-number'">70%</span>
                                     </section>
-                                    <svg class="rc-progress-line" viewBox="0 0 100 1" preserveAspectRatio="none">
-                                        <path class="rc-progress-line-trail" d="M 0.5,0.5 L 99.5,0.5"
-                                            stroke-linecap="round" stroke="#D9D9D9" stroke-width="1" fill-opacity="0">
-                                        </path>
-                                        <path class="rc-progress-line-path" d="M 0.5,0.5 L 99.5,0.5"
-                                            stroke-linecap="round" stroke="#2c313d" stroke-width="1" fill-opacity="0"
-                                            style="stroke-dasharray: 65px, 100px; stroke-dashoffset: 0px; transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray 0.3s ease 0s, stroke 0.3s linear 0s, 0.06s;">
-                                        </path>
-                                    </svg>
+                                    <div class="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="w-70/100 h-1.5 bg-gradient-to-r from-[#77c1d2] to-[#2d3441] rounded-e-full"></div>
+                                    </div>
                                 </section>
 
                                 <section class="md:col-span-1 mb-7">
                                     <section class="flex justify-between py-1">
                                         <span
-                                            class="text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">MySQL</span>
+                                            class="flex items-center gap-1 text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">VueJS</span>
                                         <span
-                                            class="text-base font-semibold text-slate-500 pr-5 dark:text-[#A6A6A6]">65%</span>
+                                            class="text-base font-semibold text-slate-500 ps-5 dark:text-[#A6A6A6]" :class="langIsFa && 'font-fa-number'">20%</span>
                                     </section>
-                                    <svg class="rc-progress-line" viewBox="0 0 100 1" preserveAspectRatio="none">
-                                        <path class="rc-progress-line-trail" d="M 0.5,0.5 L 99.5,0.5"
-                                            stroke-linecap="round" stroke="#D9D9D9" stroke-width="1" fill-opacity="0">
-                                        </path>
-                                        <path class="rc-progress-line-path" d="M 0.5,0.5 L 99.5,0.5"
-                                            stroke-linecap="round" stroke="#4479a1" stroke-width="1" fill-opacity="0"
-                                            style="stroke-dasharray: 65px, 100px; stroke-dashoffset: 0px; transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray 0.3s ease 0s, stroke 0.3s linear 0s, 0.06s;">
-                                        </path>
-                                    </svg>
+                                    <div class="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="w-65/100 h-1.5 bg-[#42d392] rounded-e-full"></div>
+                                    </div>
                                 </section>
 
                                 <section class="md:col-span-1 mb-7">
                                     <section class="flex justify-between py-1">
                                         <span
-                                            class="text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">Git</span>
+                                            class="flex items-center gap-1 text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">MySQL</span>
                                         <span
-                                            class="text-base font-semibold text-slate-500 pr-5 dark:text-[#A6A6A6]">55%</span>
+                                            class="text-base font-semibold text-slate-500 ps-5 dark:text-[#A6A6A6]" :class="langIsFa && 'font-fa-number'">65%</span>
                                     </section>
-                                    <svg class="rc-progress-line" viewBox="0 0 100 1" preserveAspectRatio="none">
-                                        <path class="rc-progress-line-trail" d="M 0.5,0.5 L 99.5,0.5"
-                                            stroke-linecap="round" stroke="#D9D9D9" stroke-width="1" fill-opacity="0">
-                                        </path>
-                                        <path class="rc-progress-line-path" d="M 0.5,0.5 L 99.5,0.5"
-                                            stroke-linecap="round" stroke="#f05033" stroke-width="1" fill-opacity="0"
-                                            style="stroke-dasharray: 55px, 100px; stroke-dashoffset: 0px; transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray 0.3s ease 0s, stroke 0.3s linear 0s, 0.06s;">
-                                        </path>
-                                    </svg>
+                                    <div class="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="w-65/100 h-1.5 bg-[#4479a1] rounded-e-full"></div>
+                                    </div>
                                 </section>
 
                                 <section class="md:col-span-1 mb-7">
                                     <section class="flex justify-between py-1">
                                         <span
-                                            class="text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">SEO</span>
+                                            class="flex items-center gap-1 text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">PostgreSQL</span>
                                         <span
-                                            class="text-base font-semibold text-slate-500 pr-5 dark:text-[#A6A6A6]">60%</span>
+                                            class="text-base font-semibold text-slate-500 ps-5 dark:text-[#A6A6A6]" :class="langIsFa && 'font-fa-number'">30%</span>
                                     </section>
-                                    <svg class="rc-progress-line" viewBox="0 0 100 1" preserveAspectRatio="none">
-                                        <path class="rc-progress-line-trail" d="M 0.5,0.5 L 99.5,0.5"
-                                            stroke-linecap="round" stroke="#D9D9D9" stroke-width="1" fill-opacity="0">
-                                        </path>
-                                        <path class="rc-progress-line-path" d="M 0.5,0.5 L 99.5,0.5"
-                                            stroke-linecap="round" stroke="#72cc50" stroke-width="1" fill-opacity="0"
-                                            style="stroke-dasharray: 60px, 100px; stroke-dashoffset: 0px; transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray 0.3s ease 0s, stroke 0.3s linear 0s, 0.06s;">
-                                        </path>
-                                    </svg>
-                                </section>
-
-                                <section class="md:col-span-1 mb-7">
-                                    <section class="flex justify-between py-1">
-                                        <span class="text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">Linux
-                                            (Ubuntu)</span>
-                                        <span
-                                            class="text-base font-semibold text-slate-500 pr-5 dark:text-[#A6A6A6]">20%</span>
-                                    </section>
-                                    <svg class="rc-progress-line" viewBox="0 0 100 1" preserveAspectRatio="none">
-                                        <path class="rc-progress-line-trail" d="M 0.5,0.5 L 99.5,0.5"
-                                            stroke-linecap="round" stroke="#D9D9D9" stroke-width="1" fill-opacity="0">
-                                        </path>
-                                        <path class="rc-progress-line-path" d="M 0.5,0.5 L 99.5,0.5"
-                                            stroke-linecap="round" stroke="#d24413" stroke-width="1" fill-opacity="0"
-                                            style="stroke-dasharray: 20px, 100px; stroke-dashoffset: 0px; transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray 0.3s ease 0s, stroke 0.3s linear 0s, 0.06s;">
-                                        </path>
-                                    </svg>
+                                    <div class="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="w-65/100 h-1.5 bg-[#336791] rounded-e-full"></div>
+                                    </div>
                                 </section>
 
                                 <section class="md:col-span-1 mb-7">
                                     <section class="flex justify-between py-1">
                                         <span
-                                            class="text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">Wordpress</span>
+                                            class="flex items-center gap-1 text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">Redis</span>
                                         <span
-                                            class="text-base font-semibold text-slate-500 pr-5 dark:text-[#A6A6A6]">70%</span>
+                                            class="text-base font-semibold text-slate-500 ps-5 dark:text-[#A6A6A6]" :class="langIsFa && 'font-fa-number'">45%</span>
                                     </section>
-                                    <svg class="rc-progress-line" viewBox="0 0 100 1" preserveAspectRatio="none">
-                                        <path class="rc-progress-line-trail" d="M 0.5,0.5 L 99.5,0.5"
-                                            stroke-linecap="round" stroke="#D9D9D9" stroke-width="1" fill-opacity="0">
-                                        </path>
-                                        <path class="rc-progress-line-path" d="M 0.5,0.5 L 99.5,0.5"
-                                            stroke-linecap="round" stroke="#1b769c" stroke-width="1" fill-opacity="0"
-                                            style="stroke-dasharray: 70px, 100px; stroke-dashoffset: 0px; transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray 0.3s ease 0s, stroke 0.3s linear 0s, 0.06s;">
-                                        </path>
-                                    </svg>
+                                    <div class="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="w-65/100 h-1.5 bg-[#ff4438] rounded-e-full"></div>
+                                    </div>
+                                </section>
+
+                                <section class="md:col-span-1 mb-7">
+                                    <section class="flex justify-between py-1">
+                                        <span
+                                            class="flex items-center gap-1 text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">Git <span x-show="langIsFa"> - گیت</span></span>
+                                        <span
+                                            class="text-base font-semibold text-slate-500 ps-5 dark:text-[#A6A6A6]" :class="langIsFa && 'font-fa-number'">55%</span>
+                                    </section>
+                                    <div class="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="w-55/100 h-1.5 bg-[#f05033] rounded-e-full"></div>
+                                    </div>
+                                </section>
+
+                                <section class="md:col-span-1 mb-7">
+                                    <section class="flex justify-between py-1">
+                                        <span
+                                            class="flex items-center gap-1 text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">SEO <span x-show="langIsFa"> - سئو</span></span>
+                                        <span
+                                            class="text-base font-semibold text-slate-500 ps-5 dark:text-[#A6A6A6]" :class="langIsFa && 'font-fa-number'">60%</span>
+                                    </section>
+                                    <div class="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="w-60/100 h-1.5 bg-[#72cc50] rounded-e-full"></div>
+                                    </div>
+                                </section>
+
+                                <section class="md:col-span-1 mb-7">
+                                    <section class="flex justify-between py-1">
+                                        <span class="flex items-center gap-1 text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">Linux (Ubuntu) <span x-show="langIsFa"> - لینوکس</span></span>
+                                        <span
+                                            class="text-base font-semibold text-slate-500 ps-5 dark:text-[#A6A6A6]" :class="langIsFa && 'font-fa-number'">20%</span>
+                                    </section>
+                                    <div class="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="w-20/100 h-1.5 bg-[#d24413] rounded-e-full"></div>
+                                    </div>
+                                </section>
+
+                                <section class="md:col-span-1 mb-7">
+                                    <section class="flex justify-between py-1">
+                                        <span
+                                            class="flex items-center gap-1 text-base text-slate-500 font-semibold dark:text-[#A6A6A6]">Wordpress <span x-show="langIsFa"> - وردپرس</span></span>
+                                        <span
+                                            class="text-base font-semibold text-slate-500 ps-5 dark:text-[#A6A6A6]" :class="langIsFa && 'font-fa-number'">70%</span>
+                                    </section>
+                                    <div class="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                                        <div class="w-70/100 h-1.5 bg-[#1b769c] rounded-e-full"></div>
+                                    </div>
                                 </section>
                             </section>
                         </section>
                     </section>
                 </section>
 
-                <section
-                    class="bg-[#F8FBFB] dark:bg-slate-900 h-20 text-center flex items-center sm:rounded-b-2xl justify-center text-slate-400 dark:text-slate-400">
-                    <p>©2023 All Rights Reserved by aminfo.</p>
+                <section class="bg-white dark:bg-slate-800 h-20 text-center flex items-center sm:rounded-b-2xl justify-center text-slate-400 dark:text-slate-400" :class="langIsFa && 'font-fa-number'">
+                    <p x-text="langIsFa ? '© 1403 تمامی حقوق برای محمد امین فراتی محفوظ است.' : '© 2025 All Rights Reserved by aminfo.'"></p>
                 </section>
             </section>
         </section>
@@ -1622,7 +827,7 @@
 
                 <section
                     class="bg-[#F8FBFB] dark:bg-slate-900 h-20 text-center flex items-center lg:rounded-b-2xl justify-center text-slate-400 dark:text-slate-400">
-                    <p>©2023 All Rights Reserved by aminfo.</p>
+                    <p>©2025 All Rights Reserved by aminfo.</p>
                 </section>
             </section>
         </section> -->
@@ -1640,117 +845,93 @@
 
                 <section
                     class="bg-[#F8FBFB] dark:bg-slate-900 h-20 text-center flex items-center lg:rounded-b-2xl justify-center text-slate-400 dark:text-slate-400">
-                    <p>©2023 All Rights Reserved by aminfo.</p>
+                    <p>©2025 All Rights Reserved by aminfo.</p>
                 </section>
             </section>
         </section> -->
 
-        <section x-show="activeTab === 5"
-            class="container flex flex-col justify-center items-center gap-5 sm:mt-10 lg:mt-0"
+        <section x-show="activeTab === 5" class="container flex flex-col justify-center items-center gap-5 sm:mt-10 lg:mt-0"
             x-transition:enter="transition ease-out duration-300 origin-top"
             x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100" x-cloak>
             <section class="bg-white dark:bg-slate-800 sm:rounded-2xl sm:mx-10 w-full lg:w-10/12">
                 <section class="py-6 px-4 sm:py-12 sm:px-20">
-                    <h2
-                        class="relative salb text-black dark:text-white inline-block text-4xl font-semibold after:w-0 sm:after:w-64 after:h-[1.5px] after:absolute after:left-48 after:top-6 after:bg-gradient-to-r after:from-[#29c5f6] after:to-[#3a9bdc] after:rounded-full">
-                        Contact</h2>
+                    <h2 x-text="langIsFa ? 'ارتباط با من' : 'Contact'" :class="langIsFa || 'salb'" class="relative text-black dark:text-white flex items-center gap-8 text-4xl font-semibold after:w-0 sm:after:w-64 after:h-[1.5px] after:bg-gradient-to-r after:from-[#29c5f6] after:to-[#3a9bdc] after:rounded-full"></h2>
                 </section>
 
                 <section class="lg:flex gap-x-6 xl:gap-x-14 px-4 sm:px-20 mb-12 items-stretch">
                     <section class="w-full lg:w-[40%] xl:w-[30%] space-y-6">
-                        <section class="flex flex-wrap p-[30px] gap-2 rounded-xl dark:bg-slate-900 bg-[#fcf4ff]">
+                        <section class="flex p-[30px] gap-2 rounded-xl dark:bg-slate-900 bg-blue-50">
                             <span class="w-8">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-7 h-7 text-blue-400">
+                                    stroke-width="1.5" stroke="currentColor" class="size-7 text-blue-400">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
                                 </svg>
-
                             </span>
                             <section class="space-y-2">
-                                <p class="text-xl font-semibold dark:text-white">Phone :</p>
-                                <p><a href="tel:+98 902 221 8241" class="text-gray-lite text-lg dark:text-[#A6A6A6]">+98
-                                        902 221 8241</a></p>
-                                <p><a href="tel:+98 921 546 4313" class="text-gray-lite text-lg dark:text-[#A6A6A6]">+98
-                                        921 546 4313</a></p>
+                                <p class="text-xl font-semibold dark:text-white" x-text="langIsFa ? 'شماره همراه :' : 'Phone :'"></p>
+                                <p><a href="tel:+98 902 221 8241" class="text-gray-lite text-lg dark:text-[#A6A6A6]" :class="langIsFa && 'font-fa-number'" :dir="langIsFa && 'ltr'">+98 902 221 8241</a></p>
                             </section>
                         </section>
-                        <section class="flex flex-wrap p-[30px] gap-2 rounded-xl dark:bg-slate-900 bg-[#eefbff]">
+                        <section class="flex p-[30px] gap-2 rounded-xl dark:bg-slate-900 bg-yellow-50">
                             <span class="w-8">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-7 h-7 text-yellow-400">
+                                    stroke-width="1.5" stroke="currentColor" class="size-7 text-yellow-400">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                                 </svg>
                             </span>
                             <section class="space-y-2">
-                                <p class="text-xl font-semibold dark:text-white">Email :</p>
+                                <p class="text-xl font-semibold dark:text-white" x-text="langIsFa ? 'ایمیل :' : 'Email :'"></p>
                                 <p>
-                                    <a href="mailto:aminfo.website.ir@gmail.com"
-                                        class="text-gray-lite text-lg dark:text-[#A6A6A6] ">aminfo.website.ir</a>
+                                    <a href="mailto:mohaminforati@gmail.com"class="text-gray-lite text-lg dark:text-[#A6A6A6] ">mohaminforati@gmail.com</a>
                                 </p>
                             </section>
                         </section>
-                        <section class="flex flex-wrap p-[30px] gap-2 rounded-xl dark:bg-slate-900 bg-[#f2f4ff]">
+                        <section class="flex p-[30px] gap-2 rounded-xl dark:bg-slate-900 bg-red-50">
                             <span class="w-8">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-7 h-7 text-red-400">
+                                    stroke-width="1.5" stroke="currentColor" class="size-7 text-red-400">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                                 </svg>
-
                             </span>
                             <section class="space-y-2">
-                                <p class="text-xl font-semibold dark:text-white">Address :</p>
-                                <p class="text-gray-lite text-lg dark:text-[#A6A6A6] ">Imam Ali Town</p>
-                                <p class="text-gray-lite text-lg dark:text-[#A6A6A6] ">Bandar Abbas, IRAN</p>
+                                <p class="text-xl font-semibold dark:text-white" x-text="langIsFa ? 'آدرس :' : 'Address :'"></p>
+                                <p class="text-gray-lite text-lg dark:text-[#A6A6A6]" x-text="langIsFa ? 'شهرک امام علی (ع)' : 'Imam Ali Town'"></p>
+                                <p class="text-gray-lite text-lg dark:text-[#A6A6A6]" x-text="langIsFa ? 'هرمزگان، بندرعباس' : 'Bandar Abbas, IRAN'"></p>
                             </section>
                         </section>
                     </section>
                     <section class="w-full mt-8 lg:mt-0 lg:w-[60%] xl:w-[70%]">
                         <section
                             class="bg-[#f8fbfb] dark:bg-slate-900 rounded-xl h-full md:p-12 p-8 flex flex-col justify-between">
-                            <h3 class="text-2xl">
-                                <span class="text-gray-lite dark:text-[#A6A6A6] ">I'm always ready to receive the
-                                    project from you</span>
+                            <h3 class="leading-10">
+                                <span class="text-2xl dark:text-[#A6A6A6]" x-text="langIsFa ? 'من همیشه آماده دریافت پروژه از شما هستم.' : 'I\'m always ready to receive the project from you.'"></span>
                                 <br>
-                                <span class="font-semibold dark:text-white">I will try to answer you as soon as
-                                    possible.</span>
+                                <span class="text-xl font-semibold dark:text-white" x-text="langIsFa ? 'سعی می کنم در اسرع وقت به شما پاسخ دهم.' : 'I will try to answer you as soon as possible.'"></span>
                             </h3>
-                            <form id="myForm">
+                            <form action="mailto:mohaminforati@email.com" method="GET" enctype="text/plain" id="emailForm">
                                 <section class="relative z-0 w-full mt-[40px] mb-8 group">
-                                    <input type="text" name="name"
-                                        class="block autofill:bg-transparent py-2.5 px-0 w-full text-sm text-gray-lite bg-transparent border-0 border-b-[2px] border-slate-400 appearance-none dark:text-white dark:border-slate-700 dark:focus:border-blue-400 focus:outline-none focus:ring-0 focus:border-blue-400 peer"
-                                        placeholder=" " required>
-                                    <label for="name"
-                                        class="peer-focus:font-medium absolute text-sm text-slate-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">Name*</label>
+                                    <input type="text" name="subject" placeholder=" " class="block autofill:bg-transparent py-2.5 px-0 w-full text-sm text-gray-lite bg-transparent border-0 border-b-[2px] border-slate-400 appearance-none dark:text-white dark:border-slate-700 dark:focus:border-blue-400 focus:outline-none focus:ring-0 focus:border-blue-400 peer" id="subject" required>
+                                    <label for="subject" for="subject" class="peer-focus:font-medium absolute text-sm text-slate-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-blue-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8" x-text="langIsFa ? 'عنوان*' : 'Title*'"></label>
                                 </section>
-                                <section class="relative z-0 w-full mb-8 group"><input type="email" name="user_email"
-                                        class="block autofill:bg-transparent py-2.5 px-0 w-full text-sm text-gray-lite bg-transparent border-0 border-b-[2px] border-slate-400 appearance-none dark:text-white dark:border-slate-700 dark:focus:border-blue-400 focus:outline-none focus:ring-0 focus:border-blue-400 peer"
-                                        placeholder=" " id="user_email" required="">
-                                    <label for="user_email"
-                                        class="peer-focus:font-medium absolute text-sm text-slate-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">Email*</label>
+                                <section class="relative z-0 w-full mb-8 group">
+                                    <textarea name="body" rows="1" placeholder=" " class="block autofill:bg-transparent py-2.5 px-0 w-full text-sm text-gray-lite bg-transparent border-0 border-b-[2px] border-slate-400 appearance-none dark:text-white dark:border-slate-700 dark:focus:border-blue-400 focus:outline-none focus:ring-0 focus:border-blue-400 peer" id="body" required=""></textarea>
+                                    <label for="body" class="peer-focus:font-medium absolute text-sm text-slate-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-blue-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8" x-text="langIsFa ? 'متن پیام*' : 'Message*'"></label>
                                 </section>
-                                <section class="relative z-0 w-full mb-8 group"><input type="text" name="message"
-                                        class="block autofill:bg-transparent py-2.5 px-0 w-full text-sm text-gray-lite bg-transparent border-0 border-b-[2px] border-slate-400 appearance-none dark:text-white dark:border-slate-700 dark:focus:border-blue-400 focus:outline-none focus:ring-0 focus:border-blue-400 peer"
-                                        placeholder=" " id="message" required=""><label for="message"
-                                        class="peer-focus:font-medium absolute text-sm text-slate-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">Message*</label>
+                                <section class="transition-all duration-300 ease-in-out inline-block rounded-lg mt-3 w-full">
+                                    <button type="submit" class="hover:bg-gradient-to-r ms-auto from-[#29c5f6] to-[#3a9bdc] transition ease-in duration-200 font-semibold cursor-pointer border-slate-400 hover:border-transparent px-6 py-2 rounded-lg border-[2px] hover:text-white text-slate-500 dark:text-slate-400 dark:hover:text-white" x-text="langIsFa ? 'ارسال' : 'Submit'"></button>
                                 </section>
                             </form>
-                            <section class="transition-all duration-300 ease-in-out inline-block rounded-lg mt-3">
-                                <input type="submit"
-                                    class="hover:bg-gradient-to-r from-[#29c5f6] to-[#3a9bdc] transition ease-in duration-200 font-semibold cursor-pointer border-slate-400 hover:border-transparent px-6 py-2 rounded-lg border-[2px] hover:text-white text-slate-500 dark:text-slate-400 dark:hover:text-white"
-                                    value="Submit">
-                            </section>
                         </section>
                     </section>
                 </section>
 
-                <section
-                    class="bg-[#F8FBFB] dark:bg-slate-900 h-20 text-center flex items-center sm:rounded-b-2xl justify-center text-slate-400 dark:text-slate-400">
-                    <p>©2023 All Rights Reserved by aminfo.</p>
+                <section class="bg-[#F8FBFB] dark:bg-slate-900 h-20 text-center flex items-center sm:rounded-b-2xl justify-center text-slate-400 dark:text-slate-400" :class="langIsFa && 'font-fa-number'">
+                    <p x-text="langIsFa ? '© 1403 تمامی حقوق برای محمد امین فراتی محفوظ است.' : '© 2025 All Rights Reserved by aminfo.'"></p>
                 </section>
             </section>
         </section>
